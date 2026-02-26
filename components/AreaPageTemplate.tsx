@@ -1,15 +1,25 @@
 import Link from "next/link";
 import { Phone, CheckCircle, Star, Clock, Shield, Award, MapPin, ArrowRight, Wrench, Settings, ThermometerSnowflake } from "lucide-react";
+import BookingForm from "@/components/BookingForm";
 
 interface AreaPageProps {
   area: string;
   areaDisplay: string;
   city: string;
   cityDisplay: string;
-  nearbyAreas: { name: string; slug: string }[];
+  nearbyAreas?: { name: string; slug: string }[];
 }
 
-export default function AreaPageTemplate({ area, areaDisplay, city, cityDisplay, nearbyAreas }: AreaPageProps) {
+const defaultNearbyAreas = [
+  { name: "Alkapuri", slug: "alkapuri" },
+  { name: "Gotri", slug: "gotri" },
+  { name: "Manjalpur", slug: "manjalpur" },
+  { name: "Akota", slug: "akota" },
+  { name: "Fatehgunj", slug: "fatehgunj" },
+  { name: "Karelibaug", slug: "karelibaug" },
+];
+
+export default function AreaPageTemplate({ area, areaDisplay, city, cityDisplay, nearbyAreas = defaultNearbyAreas }: AreaPageProps) {
   const services = [
     { name: "AC Repair", slug: "ac-repair", icon: Wrench },
     { name: "AC Service", slug: "ac-service", icon: Settings },
@@ -57,47 +67,52 @@ export default function AreaPageTemplate({ area, areaDisplay, city, cityDisplay,
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
-              <MapPin className="w-4 h-4" />
-              <span>Serving {areaDisplay}, {cityDisplay}</span>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
+                <MapPin className="w-4 h-4" />
+                <span>Serving {areaDisplay}, {cityDisplay}</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                AC Repair & Service in{" "}
+                <span className="text-yellow-400">{areaDisplay}</span>, {cityDisplay}
+              </h1>
+              <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+                Professional AC repair, service & installation in {areaDisplay}. 
+                Same-day service, certified technicians, 90-day warranty. All AC brands covered.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <a
+                  href="tel:+919727257141"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
+                >
+                  <Phone size={22} />
+                  +91 97272 57141
+                </a>
+                <a
+                  href="https://wa.me/919727257141"
+                  className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition"
+                >
+                  WhatsApp Us
+                </a>
+              </div>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Same Day Service</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>90 Days Warranty</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Expert Technicians</span>
+                </div>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              AC Repair & Service in{" "}
-              <span className="text-yellow-400">{areaDisplay}</span>, {cityDisplay}
-            </h1>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Professional AC repair, service & installation in {areaDisplay}. 
-              Same-day service, certified technicians, 90-day warranty. All AC brands covered.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <a
-                href="tel:+919727257141"
-                className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
-              >
-                <Phone size={22} />
-                +91 97272 57141
-              </a>
-              <a
-                href="https://wa.me/919727257141"
-                className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition"
-              >
-                WhatsApp Us
-              </a>
-            </div>
-            <div className="flex flex-wrap gap-4 text-sm">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Same Day Service</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>90 Days Warranty</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Expert Technicians</span>
-              </div>
+            <div className="hidden md:block">
+              <BookingForm title={`Book AC Service in ${areaDisplay}`} />
             </div>
           </div>
         </div>
@@ -174,6 +189,68 @@ export default function AreaPageTemplate({ area, areaDisplay, city, cityDisplay,
                 <span className="text-gray-800 font-medium">{brand}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Services Detail */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            AC Installation, Service & Repair in {areaDisplay}
+          </h2>
+          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            Complete AC solutions for residential and commercial customers in {areaDisplay}, {cityDisplay}
+          </p>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                <ThermometerSnowflake className="w-7 h-7 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">AC Installation in {areaDisplay}</h3>
+              <p className="text-gray-600 mb-4">
+                Professional AC installation service in {areaDisplay}. We install all types of AC including split AC, window AC, cassette AC, ductable AC, and central AC systems.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Site inspection & consultation</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Proper copper piping & wiring</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Bracket & stand installation</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Gas charging & testing</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Demo & warranty registration</li>
+              </ul>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                <Settings className="w-7 h-7 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">AC Service in {areaDisplay}</h3>
+              <p className="text-gray-600 mb-4">
+                Regular AC service and maintenance in {areaDisplay}. Keep your AC running efficiently with our professional cleaning and servicing.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Deep cleaning of filters</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Evaporator coil cleaning</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Condenser coil cleaning</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Drain pipe cleaning</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Gas pressure check</li>
+              </ul>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+                <Wrench className="w-7 h-7 text-red-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">AC Repair in {areaDisplay}</h3>
+              <p className="text-gray-600 mb-4">
+                Expert AC repair service in {areaDisplay}. We fix all AC problems including cooling issues, gas leakage, compressor problems, and electrical faults.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> AC not cooling repair</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> Gas leak detection & fix</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> Compressor repair/replace</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> PCB & motor repair</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> Water leakage fix</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>

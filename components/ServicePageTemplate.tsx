@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Phone, CheckCircle, Star, Clock, Shield, Award, MapPin, ArrowRight } from "lucide-react";
+import BookingForm from "@/components/BookingForm";
 
 // Service page configuration
 const serviceConfig = {
@@ -394,40 +395,45 @@ export default function ServicePageTemplate({ service, location, locationDisplay
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
-              <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-              <span>Rated 4.9/5 by customers in {locationDisplay}</span>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
+                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                <span>Rated 4.9/5 by customers in {locationDisplay}</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                {config.heroTitle.replace("Vadodara", locationDisplay)}
+              </h1>
+              <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+                {config.heroDescription}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <a
+                  href="tel:+919727257141"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
+                >
+                  <Phone size={22} />
+                  +91 97272 57141
+                </a>
+                <Link
+                  href="/contact"
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition border border-white/30"
+                >
+                  Get Free Quote
+                  <ArrowRight size={20} />
+                </Link>
+              </div>
+              <div className="flex flex-wrap gap-4 text-sm">
+                {config.features.slice(0, 3).map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              {config.heroTitle.replace("Vadodara", locationDisplay)}
-            </h1>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              {config.heroDescription}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <a
-                href="tel:+919727257141"
-                className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
-              >
-                <Phone size={22} />
-                +91 97272 57141
-              </a>
-              <Link
-                href="/contact"
-                className="bg-white/10 hover:bg-white/20 backdrop-blur text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition border border-white/30"
-              >
-                Get Free Quote
-                <ArrowRight size={20} />
-              </Link>
-            </div>
-            <div className="flex flex-wrap gap-4 text-sm">
-              {config.features.slice(0, 3).map((feature, idx) => (
-                <div key={idx} className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>{feature}</span>
-                </div>
-              ))}
+            <div className="hidden md:block">
+              <BookingForm title={`Book ${config.title} Now`} />
             </div>
           </div>
         </div>

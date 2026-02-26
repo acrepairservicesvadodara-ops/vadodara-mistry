@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, CheckCircle, Award, Users, Star, Shield } from "lucide-react";
+import BookingForm from "@/components/BookingForm";
 
 export const metadata: Metadata = {
   title: "About Atlas Aircon | Best AC Repair Company in Vadodara",
@@ -41,22 +42,27 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              About <span className="text-yellow-400">Atlas Aircon</span>
-            </h1>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Vadodara's most trusted AC repair & service company since 2004. 
-              We've been keeping Gujarat cool for over 20 years with expert service and genuine care.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center">
-                <span className="text-3xl font-bold">MS</span>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                About <span className="text-yellow-400">Atlas Aircon</span>
+              </h1>
+              <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+                Vadodara's most trusted AC repair & service company since 2004. 
+                We've been keeping Gujarat cool for over 20 years with expert service and genuine care.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center">
+                  <span className="text-3xl font-bold">MS</span>
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold">Mehfuz Shahid</h2>
+                  <p className="text-blue-200">Founder & Managing Director</p>
+                </div>
               </div>
-              <div>
-                <h2 className="text-xl font-semibold">Mehfuz Shahid</h2>
-                <p className="text-blue-200">Founder & Managing Director</p>
-              </div>
+            </div>
+            <div className="hidden md:block">
+              <BookingForm title="Book AC Service Now" />
             </div>
           </div>
         </div>

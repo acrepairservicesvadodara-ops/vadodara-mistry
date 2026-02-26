@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, Phone, ArrowRight } from "lucide-react";
+import BookingForm from "@/components/BookingForm";
 
 export const metadata: Metadata = {
   title: "AC Repair Service Areas in Vadodara | All Localities Covered",
@@ -76,14 +77,21 @@ export default function AreasPage() {
     <>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-16 md:py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            AC Service Areas in <span className="text-yellow-400">Vadodara</span>
-          </h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            We provide AC repair & service across all areas of Vadodara and nearby cities. 
-            Same-day service available in most locations.
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-center md:text-left">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                AC Service Areas in <span className="text-yellow-400">Vadodara</span>
+              </h1>
+              <p className="text-xl text-blue-100">
+                We provide AC repair & service across all areas of Vadodara and nearby cities. 
+                Same-day service available in most locations.
+              </p>
+            </div>
+            <div className="hidden md:block">
+              <BookingForm title="Book AC Service Now" />
+            </div>
+          </div>
         </div>
       </section>
 

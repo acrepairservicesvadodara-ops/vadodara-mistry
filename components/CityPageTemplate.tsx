@@ -1,15 +1,24 @@
 import Link from "next/link";
 import { Phone, CheckCircle, Star, Clock, Shield, Award, MapPin, ArrowRight, Wrench, Settings, ThermometerSnowflake, Building } from "lucide-react";
+import BookingForm from "@/components/BookingForm";
 
 interface CityPageProps {
   city: string;
   cityDisplay: string;
   distance: string;
   state: string;
-  nearbyCities: { name: string; slug: string }[];
+  nearbyCities?: { name: string; slug: string }[];
 }
 
-export default function CityPageTemplate({ city, cityDisplay, distance, state, nearbyCities }: CityPageProps) {
+const defaultNearbyCities = [
+  { name: "Vadodara", slug: "vadodara" },
+  { name: "Ahmedabad", slug: "ahmedabad" },
+  { name: "Surat", slug: "surat" },
+  { name: "Bharuch", slug: "bharuch" },
+  { name: "Anand", slug: "anand" },
+];
+
+export default function CityPageTemplate({ city, cityDisplay, distance, state, nearbyCities = defaultNearbyCities }: CityPageProps) {
   const services = [
     { name: "AC Repair", slug: "ac-repair", icon: Wrench, description: "Expert AC repair for all brands" },
     { name: "AC Service", slug: "ac-service", icon: Settings, description: "Complete servicing & maintenance" },
@@ -60,47 +69,52 @@ export default function CityPageTemplate({ city, cityDisplay, distance, state, n
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
-              <MapPin className="w-4 h-4" />
-              <span>{distance} from Vadodara • {state}</span>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
+                <MapPin className="w-4 h-4" />
+                <span>{distance} from Vadodara • {state}</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Industrial & Commercial AC Service in{" "}
+                <span className="text-yellow-400">{cityDisplay}</span>
+              </h1>
+              <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+                Professional industrial AC repair, chiller service & HVAC solutions in {cityDisplay}, {state}. 
+                Certified technicians, genuine parts, 90-day warranty. Commercial & Industrial specialists.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <a
+                  href="tel:+919727257141"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
+                >
+                  <Phone size={22} />
+                  +91 97272 57141
+                </a>
+                <a
+                  href="https://wa.me/919727257141"
+                  className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition"
+                >
+                  WhatsApp Us
+                </a>
+              </div>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Industrial AC Experts</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>90 Days Warranty</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Commercial HVAC</span>
+                </div>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              AC Repair & Service in{" "}
-              <span className="text-yellow-400">{cityDisplay}</span>
-            </h1>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Professional AC repair, service & installation in {cityDisplay}, {state}. 
-              Certified technicians, genuine parts, 90-day warranty. Serving {cityDisplay} from our Vadodara base.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <a
-                href="tel:+919727257141"
-                className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
-              >
-                <Phone size={22} />
-                +91 97272 57141
-              </a>
-              <a
-                href="https://wa.me/919727257141"
-                className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition"
-              >
-                WhatsApp Us
-              </a>
-            </div>
-            <div className="flex flex-wrap gap-4 text-sm">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>All Brands Covered</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>90 Days Warranty</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Expert Technicians</span>
-              </div>
+            <div className="hidden md:block">
+              <BookingForm title={`Book Service in ${cityDisplay}`} />
             </div>
           </div>
         </div>
@@ -188,6 +202,68 @@ export default function CityPageTemplate({ city, cityDisplay, distance, state, n
                 <span className="text-gray-800 font-medium">{brand}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Complete AC Solutions */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            AC Installation, Service & Repair in {cityDisplay}
+          </h2>
+          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            Complete air conditioning solutions for industrial and commercial customers in {cityDisplay}, {state}
+          </p>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                <ThermometerSnowflake className="w-7 h-7 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">AC Installation in {cityDisplay}</h3>
+              <p className="text-gray-600 mb-4">
+                Professional AC installation for commercial and industrial establishments in {cityDisplay}. We handle large-scale installations including VRF/VRV systems, central AC, and ductable units.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Site survey & load calculation</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Ductwork & piping installation</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> VRF/VRV system installation</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Central AC installation</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Commissioning & testing</li>
+              </ul>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                <Settings className="w-7 h-7 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">AC Service in {cityDisplay}</h3>
+              <p className="text-gray-600 mb-4">
+                Regular AC service and maintenance for factories, offices, hospitals, and commercial buildings in {cityDisplay}. Keep your HVAC systems running efficiently.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Chiller maintenance</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> AHU & FCU servicing</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Duct cleaning & sanitization</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Cooling tower service</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Annual maintenance contracts</li>
+              </ul>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+                <Wrench className="w-7 h-7 text-red-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">AC Repair in {cityDisplay}</h3>
+              <p className="text-gray-600 mb-4">
+                Expert AC and chiller repair service in {cityDisplay}. We repair all types of industrial and commercial cooling systems with minimal downtime.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> Chiller compressor repair</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> VRF system fault repair</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> Central AC repair</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> Refrigerant leak repair</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> Emergency breakdown service</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>

@@ -15,6 +15,7 @@ import {
   MapPin,
   ArrowRight
 } from "lucide-react";
+import BookingForm from "@/components/BookingForm";
 
 const services = [
   {
@@ -196,40 +197,7 @@ export default function Home() {
               </div>
             </div>
             <div className="hidden md:block">
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
-                <h3 className="text-2xl font-bold mb-6">Book AC Service Now</h3>
-                <form className="space-y-4">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                  />
-                  <select className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white/80 focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                    <option value="" className="text-gray-900">Select Service</option>
-                    <option value="repair" className="text-gray-900">AC Repair</option>
-                    <option value="service" className="text-gray-900">AC Service</option>
-                    <option value="installation" className="text-gray-900">AC Installation</option>
-                    <option value="amc" className="text-gray-900">AC AMC</option>
-                    <option value="gas" className="text-gray-900">Gas Refilling</option>
-                  </select>
-                  <textarea
-                    placeholder="Describe your issue..."
-                    rows={3}
-                    className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                  ></textarea>
-                  <button
-                    type="submit"
-                    className="w-full bg-yellow-500 hover:bg-yellow-400 text-gray-900 py-4 rounded-lg font-bold text-lg transition"
-                  >
-                    Book Free Inspection
-                  </button>
-                </form>
-              </div>
+              <BookingForm title="Book AC Service Now" />
             </div>
           </div>
         </div>
@@ -330,6 +298,79 @@ export default function Home() {
                 </span>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AC Installation, Service & Repair Detail */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              AC Installation, Service & Repair in Vadodara
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Complete AC solutions for homes, offices, and industrial establishments in Vadodara
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-green-300 hover:shadow-xl transition">
+              <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                <ThermometerSnowflake className="w-7 h-7 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">AC Installation</h3>
+              <p className="text-gray-600 mb-4">
+                Professional AC installation in Vadodara for all types - Split AC, Window AC, Cassette AC, Ductable AC, Central AC, and VRF/VRV systems.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600 mb-4">
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Site inspection & consultation</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Quality copper piping work</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Proper electrical wiring</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Bracket & stand installation</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-500" /> Gas charging & testing</li>
+              </ul>
+              <Link href="/ac-installation-vadodara" className="text-green-600 font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                Learn More <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-blue-300 hover:shadow-xl transition">
+              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                <Settings className="w-7 h-7 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">AC Service</h3>
+              <p className="text-gray-600 mb-4">
+                Regular AC service and maintenance in Vadodara to keep your AC running efficiently. Deep cleaning, gas check, and performance tune-up.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600 mb-4">
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Deep filter cleaning</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Evaporator coil cleaning</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Condenser coil cleaning</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Drain pipe cleaning</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-blue-500" /> Gas pressure check</li>
+              </ul>
+              <Link href="/ac-service-vadodara" className="text-blue-600 font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                Learn More <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-red-300 hover:shadow-xl transition">
+              <div className="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+                <Wrench className="w-7 h-7 text-red-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">AC Repair</h3>
+              <p className="text-gray-600 mb-4">
+                Expert AC repair service in Vadodara. We fix all AC problems - cooling issues, gas leakage, compressor problems, and electrical faults.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600 mb-4">
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> AC not cooling repair</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> Gas leak detection & fix</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> Compressor repair/replace</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> PCB & motor repair</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-red-500" /> Water leakage fix</li>
+              </ul>
+              <Link href="/ac-repair-vadodara" className="text-red-600 font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                Learn More <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
