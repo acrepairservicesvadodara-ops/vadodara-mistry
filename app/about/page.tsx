@@ -39,7 +39,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative text-white py-16 md:py-24 overflow-hidden">
+      <section className="relative text-white py-8 md:py-24 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=80"
@@ -51,26 +51,33 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-600/90 to-orange-500/80" />
         </div>
         <div className="container mx-auto px-4 relative">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Mobile: Booking Form First */}
+            <div className="md:hidden">
+              <BookingForm title="Book Service Now" compact />
+            </div>
+            
+            <div className="order-2 md:order-1">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
                 About <span className="text-yellow-300">Vadodara Mistry</span>
               </h1>
-              <p className="text-xl text-orange-100 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-orange-100 mb-6 md:mb-8 leading-relaxed">
                 Your trusted home services partner in Vadodara. From painting to plumbing, 
                 carpentry to civil work - we bring skilled mistries to your doorstep.
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center">
-                  <span className="text-3xl font-bold">VM</span>
+                <div className="w-16 md:w-20 h-16 md:h-20 bg-white/10 rounded-full flex items-center justify-center">
+                  <span className="text-2xl md:text-3xl font-bold">VM</span>
                 </div>
                 <div>
-                  <h2 className="text-xl font-semibold">Vadodara Mistry Team</h2>
-                  <p className="text-orange-200">Trusted Since 2014</p>
+                  <h2 className="text-lg md:text-xl font-semibold">Vadodara Mistry Team</h2>
+                  <p className="text-orange-200 text-sm md:text-base">Trusted Since 2014</p>
                 </div>
               </div>
             </div>
-            <div className="hidden md:block">
+            
+            {/* Desktop: Booking Form */}
+            <div className="hidden md:block order-1 md:order-2">
               <BookingForm title="Book Service Now" />
             </div>
           </div>

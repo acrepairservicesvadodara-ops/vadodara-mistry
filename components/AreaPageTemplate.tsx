@@ -66,7 +66,7 @@ export default function AreaPageTemplate({ area, areaDisplay, city, cityDisplay,
   return (
     <>
       {/* Hero Section */}
-      <section className="relative text-white py-16 md:py-24 overflow-hidden">
+      <section className="relative text-white py-8 md:py-24 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
@@ -78,21 +78,26 @@ export default function AreaPageTemplate({ area, areaDisplay, city, cityDisplay,
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 via-blue-800/90 to-blue-700/85" />
         </div>
         <div className="container mx-auto px-4 relative">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Mobile: Booking Form First */}
+            <div className="md:hidden">
+              <BookingForm title={`Book Service in ${areaDisplay}`} compact />
+            </div>
+            
+            <div className="order-2 md:order-1">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-4 md:mb-6">
                 <MapPin className="w-4 h-4" />
                 <span>Serving {areaDisplay}, {cityDisplay}</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              <h1 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6 leading-tight">
                 AC Repair & Service in{" "}
                 <span className="text-yellow-400">{areaDisplay}</span>, {cityDisplay}
               </h1>
-              <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-blue-100 mb-6 md:mb-8 leading-relaxed">
                 Professional AC repair, service & installation in {areaDisplay}. 
                 Same-day service, certified technicians, 90-day warranty. All AC brands covered.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="hidden md:flex flex-col sm:flex-row gap-4 mb-8">
                 <a
                   href="tel:+917600337866"
                   className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
@@ -107,7 +112,7 @@ export default function AreaPageTemplate({ area, areaDisplay, city, cityDisplay,
                   WhatsApp Us
                 </a>
               </div>
-              <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex flex-wrap gap-3 md:gap-4 text-xs md:text-sm">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-400" />
                   <span>Same Day Service</span>
@@ -122,7 +127,9 @@ export default function AreaPageTemplate({ area, areaDisplay, city, cityDisplay,
                 </div>
               </div>
             </div>
-            <div className="hidden md:block">
+            
+            {/* Desktop: Booking Form */}
+            <div className="hidden md:block order-1 md:order-2">
               <BookingForm title={`Book AC Service in ${areaDisplay}`} />
             </div>
           </div>

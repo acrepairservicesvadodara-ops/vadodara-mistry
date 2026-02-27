@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import BookingForm from "@/components/BookingForm";
 
 export const metadata: Metadata = {
   title: "Contact Vadodara Mistry | Home Services | +91 76003 37866",
@@ -14,7 +15,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative text-white py-16 md:py-20 overflow-hidden">
+      <section className="relative text-white py-8 md:py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80"
@@ -25,14 +26,21 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-600/90 to-orange-500/80" />
         </div>
-        <div className="container mx-auto px-4 text-center relative">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Contact <span className="text-yellow-300">Vadodara Mistry</span>
-          </h1>
-          <p className="text-xl text-orange-100 max-w-2xl mx-auto">
-            Get in touch for painting, plumbing, carpentry, civil work & more. 
-            We're here to help 7 days a week.
-          </p>
+        <div className="container mx-auto px-4 relative">
+          {/* Mobile: Booking Form First */}
+          <div className="md:hidden mb-6">
+            <BookingForm title="Book Service Now" compact />
+          </div>
+          
+          <div className="text-center">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
+              Contact <span className="text-yellow-300">Vadodara Mistry</span>
+            </h1>
+            <p className="text-lg md:text-xl text-orange-100 max-w-2xl mx-auto">
+              Get in touch for painting, plumbing, carpentry, civil work & more. 
+              We're here to help 7 days a week.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -93,104 +101,7 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email (Optional)
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
-                    Service Required *
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="ac-repair">AC Repair</option>
-                    <option value="ac-service">AC Service</option>
-                    <option value="ac-installation">AC Installation</option>
-                    <option value="ac-amc">AC AMC</option>
-                    <option value="gas-refilling">Gas Refilling</option>
-                    <option value="chiller-repair">Chiller Repair</option>
-                    <option value="hvac">HVAC Service</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label htmlFor="area" className="block text-sm font-medium text-gray-700 mb-1">
-                    Your Area/Location
-                  </label>
-                  <input
-                    type="text"
-                    id="area"
-                    name="area"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="E.g., Alkapuri, Vadodara"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Describe Your Issue
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Describe your AC problem or service requirement..."
-                  ></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-lg font-bold text-lg transition"
-                >
-                  Submit Request
-                </button>
-              </form>
+              <BookingForm title="Send Us a Message" />
             </div>
 
             {/* Office Info & Map */}

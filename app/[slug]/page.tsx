@@ -207,17 +207,22 @@ export default async function KeywordPage({
   return (
     <>
       {/* Hero Section */}
-      <section className={`${config.gradient} py-20`}>
+      <section className={`${config.gradient} py-8 md:py-20`}>
         <div className="container mx-auto px-4">
+          {/* Mobile: Booking Form First */}
+          <div className="md:hidden mb-6">
+            <BookingForm title={`Book ${keyword.title}`} compact />
+          </div>
+          
           <div className="max-w-4xl mx-auto text-center text-white">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
               {keyword.title} in Vadodara
             </h1>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-lg md:text-xl mb-6 md:mb-8 text-white/90">
               {keyword.description} in Vadodara. Trusted by 10,000+ customers. 
               Quality work at affordable prices with warranty.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="hidden md:flex flex-col sm:flex-row gap-4 justify-center">
               <CallButton className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold text-lg" />
               <a
                 href={`https://wa.me/917600337866?text=Hi, I need ${keyword.title} service in Vadodara`}

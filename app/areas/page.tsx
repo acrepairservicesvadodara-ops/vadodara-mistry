@@ -77,7 +77,7 @@ export default function AreasPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative text-white py-16 md:py-20 overflow-hidden">
+      <section className="relative text-white py-8 md:py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
@@ -89,17 +89,24 @@ export default function AreasPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-600/90 to-orange-500/80" />
         </div>
         <div className="container mx-auto px-4 relative">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Mobile: Booking Form First */}
+            <div className="md:hidden">
+              <BookingForm title="Book Home Service Now" compact />
+            </div>
+            
+            <div className="text-center md:text-left order-2 md:order-1">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
                 Home Service Areas in <span className="text-yellow-300">Vadodara</span>
               </h1>
-              <p className="text-xl text-orange-100">
+              <p className="text-lg md:text-xl text-orange-100">
                 We provide home services across all areas of Vadodara. 
                 Painting, plumbing, carpentry, civil work & more. Same-day service available.
               </p>
             </div>
-            <div className="hidden md:block">
+            
+            {/* Desktop: Booking Form */}
+            <div className="hidden md:block order-1 md:order-2">
               <BookingForm title="Book Home Service Now" />
             </div>
           </div>

@@ -222,22 +222,27 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-600/90 to-orange-500/80" />
         </div>
-        <div className="container mx-auto px-4 py-16 md:py-24 relative">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+        <div className="container mx-auto px-4 py-8 md:py-24 relative">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Mobile: Booking Form First */}
+            <div className="md:hidden">
+              <BookingForm title="Get Free Quotation" compact />
+            </div>
+            
+            <div className="order-2 md:order-1">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
                 <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 <span>Trusted by 5000+ customers in Vadodara</span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
                 Best Home Services in{" "}
                 <span className="text-yellow-300">Vadodara</span>
               </h1>
-              <p className="text-xl text-orange-100 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-orange-100 mb-6 md:mb-8 leading-relaxed">
                 Expert POP ceiling, painting, civil work, plumbing, carpentry, 
                 fabrication & solar services. Your trusted mistry network in Vadodara.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="hidden md:flex flex-col sm:flex-row gap-4 mb-8">
                 <a
                   href="tel:+917600337866"
                   className="bg-white hover:bg-gray-100 text-orange-600 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
@@ -254,7 +259,7 @@ export default function Home() {
                   WhatsApp Us
                 </a>
               </div>
-              <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex flex-wrap gap-3 md:gap-4 text-xs md:text-sm">
                 <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full">
                   <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Verified Mistries</span>
@@ -269,7 +274,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="hidden md:block">
+            
+            {/* Desktop: Booking Form */}
+            <div className="hidden md:block order-1 md:order-2">
               <BookingForm title="Get Free Quotation" />
             </div>
           </div>

@@ -59,20 +59,25 @@ export default function HomeServiceTemplate({ config, slug }: HomeServiceTemplat
           />
           <div className={`absolute inset-0 bg-gradient-to-r ${colors.gradient}`} />
         </div>
-        <div className="container mx-auto px-4 py-16 md:py-20 relative">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
+        <div className="container mx-auto px-4 py-8 md:py-20 relative">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Mobile: Booking Form First */}
+            <div className="md:hidden">
+              <BookingForm title={`Get ${config.title} Quote`} compact />
+            </div>
+            
+            <div className="order-2 md:order-1">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-4 md:mb-6">
                 <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 <span>Trusted by 5000+ customers in Vadodara</span>
               </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight">
                 {config.heroTitle}
               </h1>
-              <p className="text-xl text-white/90 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 leading-relaxed">
                 {config.heroDescription}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="hidden md:flex flex-col sm:flex-row gap-4 mb-8">
                 <a
                   href="tel:+917600337866"
                   className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
@@ -89,7 +94,7 @@ export default function HomeServiceTemplate({ config, slug }: HomeServiceTemplat
                   WhatsApp Us
                 </a>
               </div>
-              <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex flex-wrap gap-3 md:gap-4 text-xs md:text-sm">
                 {config.features.slice(0, 3).map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full">
                     <CheckCircle className="w-4 h-4 text-green-400" />
@@ -98,7 +103,9 @@ export default function HomeServiceTemplate({ config, slug }: HomeServiceTemplat
                 ))}
               </div>
             </div>
-            <div className="hidden md:block">
+            
+            {/* Desktop: Booking Form */}
+            <div className="hidden md:block order-1 md:order-2">
               <BookingForm title={`Get ${config.title} Quote`} />
             </div>
           </div>
