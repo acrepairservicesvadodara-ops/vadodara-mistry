@@ -86,7 +86,7 @@ export default function Header() {
             className="flex items-center gap-2 font-semibold hover:text-orange-200 transition"
           >
             <Phone size={16} />
-            +91 97272 57141
+            +91 76003 37866
           </a>
         </div>
       </div>
@@ -429,7 +429,7 @@ export default function Header() {
                 href="tel:+917600337866"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold text-center"
               >
-                📞 Call Now: +91 97272 57141
+                📞 Call Now: +91 76003 37866
               </a>
             </div>
           </div>

@@ -3,7 +3,7 @@ import HomeServiceTemplate from "@/components/HomeServiceTemplate";
 
 export const metadata: Metadata = {
   title: "POP & Painting Contractor in Vadodara | False Ceiling & Wall Painting",
-  description: "Professional POP false ceiling & painting services in Vadodara. Expert wall painting, texture paint, gypsum ceiling & POP work. Call +91 97272 57141",
+  description: "Professional POP false ceiling & painting services in Vadodara. Expert wall painting, texture paint, gypsum ceiling & POP work. Call +91 76003 37866",
   keywords: "pop contractor vadodara, painting vadodara, false ceiling vadodara, wall painting vadodara, texture paint vadodara, gypsum ceiling vadodara",
   openGraph: {
     title: "POP & Painting Services in Vadodara | Vadodara Mistry",

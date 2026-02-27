@@ -48,7 +48,7 @@ export default function ContactPage() {
                 <Phone className="w-7 h-7 text-white" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-1">Call Us</h3>
-              <p className="text-blue-600 font-medium">+91 97272 57141</p>
+              <p className="text-blue-600 font-medium">+91 76003 37866</p>
             </a>
             
             <a
@@ -210,7 +210,7 @@ export default function ContactPage() {
                 <div className="flex items-center gap-4 mb-4">
                   <Phone className="w-6 h-6 text-blue-600" />
                   <div>
-                    <p className="text-gray-600">+91 97272 57141</p>
+                    <p className="text-gray-600">+91 76003 37866</p>
                   </div>
                 </div>
                 
@@ -265,7 +265,7 @@ export default function ContactPage() {
             className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition"
           >
             <Phone size={22} />
-            +91 97272 57141
+            +91 76003 37866
           </a>
         </div>
       </section>

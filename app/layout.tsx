@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: "Vadodara Mistry - Best Home Services in Vadodara | Painter, Civil, Plumber, Carpenter, Fabricator",
     template: "%s | Vadodara Mistry"
   },
-  description: "Top-rated home services in Vadodara. Expert POP ceiling, painting, civil work, plumbing, carpentry, fabrication & solar services. Trusted mistry network. Call +91 97272 57141",
+  description: "Top-rated home services in Vadodara. Expert POP ceiling, painting, civil work, plumbing, carpentry, fabrication & solar services. Trusted mistry network. Call +91 76003 37866",
   keywords: [
     "Vadodara mistry",
     "home services Vadodara",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Vadodara Mistry - Home Services Expert",
-    description: "Expert home services in Vadodara. Call +91 97272 57141",
+    description: "Expert home services in Vadodara. Call +91 76003 37866",
     images: ["/og-image.jpg"],
   },
   verification: {

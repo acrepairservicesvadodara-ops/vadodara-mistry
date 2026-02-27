@@ -54,7 +54,7 @@
   <!-- Phone Number -->
   <g transform="translate(300, 500)">
     <rect x="0" y="0" width="350" height="60" rx="30" fill="#1f2937"/>
-    <text x="175" y="40" font-family="Arial, sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" font-weight="600">📞 +91 97272 57141</text>
+    <text x="175" y="40" font-family="Arial, sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" font-weight="600">📞 +91 76003 37866</text>
   </g>
   
   <!-- Website -->

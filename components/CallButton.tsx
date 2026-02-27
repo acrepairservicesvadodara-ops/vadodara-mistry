@@ -17,7 +17,7 @@ export default function CallButton({ className, showText = false }: CallButtonPr
         aria-label="Call us"
       >
         <Phone className="w-5 h-5 inline mr-2" />
-        Call +91 97272 57141
+        Call +91 76003 37866
       </a>
     );
   }

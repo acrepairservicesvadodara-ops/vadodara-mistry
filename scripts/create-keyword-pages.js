@@ -362,7 +362,7 @@ import BookingForm from "@/components/BookingForm";
 
 export const metadata: Metadata = {
   title: "${kw.title} in Vadodara | Installation, Service & Repair | Atlas Aircon",
-  description: "${kw.description} in Vadodara. Expert AC installation, service & repair. 20+ years experience, 90-day warranty. Call +91 97272 57141",
+  description: "${kw.description} in Vadodara. Expert AC installation, service & repair. 20+ years experience, 90-day warranty. Call +91 76003 37866",
   keywords: [
     "${kw.title} Vadodara",
     "${kw.slug.replace(/-/g, ' ')}",
@@ -419,7 +419,7 @@ export default function ${funcName}() {
                   className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
                 >
                   <Phone size={22} />
-                  +91 97272 57141
+                  +91 76003 37866
                 </a>
                 <a
                   href="https://wa.me/917600337866"
@@ -607,7 +607,7 @@ export default function ${funcName}() {
             className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition"
           >
             <Phone size={22} />
-            Call +91 97272 57141
+            Call +91 76003 37866
           </a>
         </div>
       </section>

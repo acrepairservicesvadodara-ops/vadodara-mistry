@@ -228,7 +228,7 @@ export default function AreasPage() {
               className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"
             >
               <Phone size={22} />
-              +91 97272 57141
+              +91 76003 37866
             </a>
             <a
               href="https://wa.me/917600337866"

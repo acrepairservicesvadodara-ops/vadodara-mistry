@@ -3,7 +3,7 @@ import HomeServiceTemplate from "@/components/HomeServiceTemplate";
 
 export const metadata: Metadata = {
   title: "Plumber in Vadodara | Best Plumbing Services Near You",
-  description: "Professional plumber services in Vadodara. Expert pipe fitting, bathroom fitting, leak repair, drainage cleaning & more. 24/7 service. Call +91 97272 57141",
+  description: "Professional plumber services in Vadodara. Expert pipe fitting, bathroom fitting, leak repair, drainage cleaning & more. 24/7 service. Call +91 76003 37866",
   keywords: "plumber vadodara, plumbing services vadodara, pipe fitting vadodara, bathroom fitting vadodara, leak repair vadodara, drainage cleaning",
   openGraph: {
     title: "Plumber in Vadodara | Vadodara Mistry",

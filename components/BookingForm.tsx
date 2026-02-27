@@ -70,7 +70,7 @@ export default function BookingForm({ title = "Book Home Service", compact = fal
             className="inline-flex items-center gap-2 mt-4 text-orange-600 hover:text-orange-700 font-medium"
           >
             <Phone className="w-4 h-4" />
-            Call Now: +91 97272 57141
+            Call Now: +91 76003 37866
           </a>
         </div>
       </div>
@@ -186,7 +186,7 @@ export default function BookingForm({ title = "Book Home Service", compact = fal
           className="inline-flex items-center gap-2 text-lg font-bold text-orange-600 hover:text-orange-700"
         >
           <Phone className="w-5 h-5" />
-          +91 97272 57141
+          +91 76003 37866
         </a>
       </div>
     </div>

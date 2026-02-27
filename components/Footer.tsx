@@ -163,7 +163,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <a href="tel:+917600337866" className="flex items-center gap-2 text-gray-300 hover:text-white">
                 <Phone size={18} className="text-orange-500" />
-                +91 97272 57141
+                +91 76003 37866
               </a>
               <a href="mailto:info@vadodaramistry.com" className="flex items-center gap-2 text-gray-300 hover:text-white">
                 <Mail size={18} className="text-orange-500" />

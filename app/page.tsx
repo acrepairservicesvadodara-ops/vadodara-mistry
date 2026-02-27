@@ -191,7 +191,7 @@ const faqs = [
   },
   {
     question: "How can I book a service?",
-    answer: "You can book our services by calling +91 97272 57141, sending a WhatsApp message, or filling out our online booking form. We provide free quotations for all services.",
+    answer: "You can book our services by calling +91 76003 37866, sending a WhatsApp message, or filling out our online booking form. We provide free quotations for all services.",
   },
   {
     question: "Do you provide services for commercial and industrial projects?",
@@ -243,7 +243,7 @@ export default function Home() {
                   className="bg-white hover:bg-gray-100 text-orange-600 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
                 >
                   <Phone size={22} />
-                  Call: +91 97272 57141
+                  Call: +91 76003 37866
                 </a>
                 <a
                   href="https://wa.me/917600337866"
@@ -711,7 +711,7 @@ export default function Home() {
               className="bg-white hover:bg-gray-100 text-orange-600 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"
             >
               <Phone size={22} />
-              +91 97272 57141
+              +91 76003 37866
             </a>
             <a
               href="https://wa.me/917600337866"

@@ -3,7 +3,7 @@ import HomeServiceTemplate from "@/components/HomeServiceTemplate";
 
 export const metadata: Metadata = {
   title: "Fabrication Work Vadodara | Steel & Metal Fabrication Services",
-  description: "Professional fabrication services in Vadodara. Expert welding, steel fabrication, gate making, grill work, railing & MS fabrication. Call +91 97272 57141",
+  description: "Professional fabrication services in Vadodara. Expert welding, steel fabrication, gate making, grill work, railing & MS fabrication. Call +91 76003 37866",
   keywords: "fabrication vadodara, welding vadodara, steel fabrication vadodara, gate making vadodara, grill work vadodara, railing vadodara",
   openGraph: {
     title: "Fabrication Work Vadodara | Vadodara Mistry",

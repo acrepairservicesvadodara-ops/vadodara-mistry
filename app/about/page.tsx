@@ -210,7 +210,7 @@ export default function AboutPage() {
               <Phone className="w-10 h-10 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Call Us</h3>
               <a href="tel:+917600337866" className="text-orange-100 hover:text-white">
-                +91 97272 57141
+                +91 76003 37866
               </a>
             </div>
             <div className="text-center">

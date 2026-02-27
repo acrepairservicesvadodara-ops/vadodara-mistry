@@ -3,7 +3,7 @@ import HomeServiceTemplate from "@/components/HomeServiceTemplate";
 
 export const metadata: Metadata = {
   title: "Solar Panel Installation in Vadodara | Solar System for Home",
-  description: "Professional solar panel installation in Vadodara. On-grid & off-grid solar systems with government subsidy. 25-year warranty. Call +91 97272 57141",
+  description: "Professional solar panel installation in Vadodara. On-grid & off-grid solar systems with government subsidy. 25-year warranty. Call +91 76003 37866",
   keywords: "solar panel vadodara, solar installation vadodara, solar system vadodara, rooftop solar vadodara, solar subsidy vadodara, solar inverter vadodara",
   openGraph: {
     title: "Solar Panel Installation in Vadodara | Vadodara Mistry",

@@ -3,7 +3,7 @@ import HomeServiceTemplate from "@/components/HomeServiceTemplate";
 
 export const metadata: Metadata = {
   title: "Carpenter in Vadodara | Best Furniture & Woodwork Services",
-  description: "Professional carpenter services in Vadodara. Expert furniture making, modular kitchen, wardrobe, wooden work, door fitting & repair. Call +91 97272 57141",
+  description: "Professional carpenter services in Vadodara. Expert furniture making, modular kitchen, wardrobe, wooden work, door fitting & repair. Call +91 76003 37866",
   keywords: "carpenter vadodara, furniture maker vadodara, modular kitchen vadodara, wardrobe vadodara, woodwork vadodara, door fitting vadodara",
   openGraph: {
     title: "Carpenter in Vadodara | Vadodara Mistry",

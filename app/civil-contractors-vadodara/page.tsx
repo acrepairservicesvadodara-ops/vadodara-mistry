@@ -3,7 +3,7 @@ import HomeServiceTemplate from "@/components/HomeServiceTemplate";
 
 export const metadata: Metadata = {
   title: "Civil Contractors Vadodara | Best Construction & Building Work",
-  description: "Professional civil contractors in Vadodara. Expert construction, building work, tile fitting, masonry, wall construction & renovation services. Call +91 97272 57141",
+  description: "Professional civil contractors in Vadodara. Expert construction, building work, tile fitting, masonry, wall construction & renovation services. Call +91 76003 37866",
   keywords: "civil contractors vadodara, construction work vadodara, building contractors vadodara, tile fitting vadodara, masonry vadodara, renovation vadodara",
   openGraph: {
     title: "Civil Contractors Vadodara | Vadodara Mistry",

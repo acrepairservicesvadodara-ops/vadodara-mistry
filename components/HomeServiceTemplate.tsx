@@ -78,7 +78,7 @@ export default function HomeServiceTemplate({ config, slug }: HomeServiceTemplat
                   className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
                 >
                   <Phone size={22} />
-                  Call: +91 97272 57141
+                  Call: +91 76003 37866
                 </a>
                 <a
                   href="https://wa.me/917600337866"
@@ -317,7 +317,7 @@ export default function HomeServiceTemplate({ config, slug }: HomeServiceTemplat
               className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"
             >
               <Phone size={22} />
-              +91 97272 57141
+              +91 76003 37866
             </a>
             <a
               href="https://wa.me/917600337866"

@@ -33,7 +33,7 @@ export async function generateMetadata({
   const areaPage = areaKeywords.find((a) => a.slug === slug);
   if (areaPage) {
     const title = `Home Services in ${areaPage.areaName}, Vadodara | Painter, Plumber, Carpenter`;
-    const description = `Best home services in ${areaPage.areaName}, Vadodara. Professional painters, plumbers, carpenters, civil contractors & fabrication work. Call +91 97272 57141`;
+    const description = `Best home services in ${areaPage.areaName}, Vadodara. Professional painters, plumbers, carpenters, civil contractors & fabrication work. Call +91 76003 37866`;
     return {
       title,
       description,
@@ -57,7 +57,7 @@ export async function generateMetadata({
   }
 
   const title = `${keyword.title} in Vadodara | Professional ${keyword.title} Services - Vadodara Mistry`;
-  const description = `Looking for ${keyword.title.toLowerCase()} in Vadodara? Vadodara Mistry offers professional ${keyword.description.toLowerCase()}. ✓ Experienced Team ✓ Best Prices ✓ Quality Work. Call +91 97272 57141`;
+  const description = `Looking for ${keyword.title.toLowerCase()} in Vadodara? Vadodara Mistry offers professional ${keyword.description.toLowerCase()}. ✓ Experienced Team ✓ Best Prices ✓ Quality Work. Call +91 76003 37866`;
 
   return {
     title,
