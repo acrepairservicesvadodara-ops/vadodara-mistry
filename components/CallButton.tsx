@@ -2,11 +2,31 @@
 
 import { Phone } from "lucide-react";
 
-export default function CallButton() {
+interface CallButtonProps {
+  className?: string;
+  showText?: boolean;
+}
+
+export default function CallButton({ className, showText = false }: CallButtonProps) {
+  // If custom className provided, render a simple text button
+  if (className) {
+    return (
+      <a
+        href="tel:+917600337866"
+        className={className}
+        aria-label="Call us"
+      >
+        <Phone className="w-5 h-5 inline mr-2" />
+        Call +91 97272 57141
+      </a>
+    );
+  }
+
+  // Default floating button
   return (
     <a
-      href="tel:+919727257141"
-      className="fixed bottom-6 right-6 z-50 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-all hover:scale-110 group"
+      href="tel:+917600337866"
+      className="fixed bottom-6 right-6 z-50 bg-orange-600 text-white p-4 rounded-full shadow-lg hover:bg-orange-700 transition-all hover:scale-110 group"
       aria-label="Call us"
     >
       <Phone size={28} />
@@ -17,7 +37,7 @@ export default function CallButton() {
       </span>
 
       {/* Ripple effect */}
-      <span className="absolute inset-0 rounded-full animate-ping bg-blue-600 opacity-25"></span>
+      <span className="absolute inset-0 rounded-full animate-ping bg-orange-600 opacity-25"></span>
     </a>
   );
 }

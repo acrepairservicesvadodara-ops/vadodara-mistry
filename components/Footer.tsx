@@ -1,153 +1,121 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
-// Core Services
-const services = [
-  { name: "AC Repair", href: "/ac-repair-vadodara" },
-  { name: "AC Service", href: "/ac-service-vadodara" },
-  { name: "AC Installation", href: "/ac-installation-vadodara" },
-  { name: "AC AMC", href: "/ac-amc-vadodara" },
-  { name: "AC Gas Refilling", href: "/ac-gas-refilling-vadodara" },
-  { name: "Chiller Repair", href: "/chiller-repair-vadodara" },
-  { name: "HVAC Service", href: "/hvac-service-vadodara" },
-  { name: "VRF VRV System", href: "/vrf-vrv-system-vadodara" },
-  { name: "Refrigerator Repair", href: "/refrigerator-repair-vadodara" },
-  { name: "Fridge Repair", href: "/fridge-repair-vadodara" },
+// Painting & POP Services
+const paintingServices = [
+  { name: "POP False Ceiling", href: "/pop-false-ceiling-vadodara" },
+  { name: "Gypsum Ceiling", href: "/gypsum-false-ceiling-vadodara" },
+  { name: "PVC Ceiling Panels", href: "/pvc-ceiling-panels-vadodara" },
+  { name: "Texture Painting", href: "/texture-wall-painting-vadodara" },
+  { name: "Interior Painting", href: "/interior-painting-vadodara" },
+  { name: "Exterior Painting", href: "/exterior-painting-vadodara" },
+  { name: "Wall Painting", href: "/wall-painting-vadodara" },
+  { name: "Waterproofing", href: "/waterproofing-vadodara" },
+  { name: "Asian Paints Royale", href: "/asian-paints-royale-vadodara" },
+  { name: "3D Wall Painting", href: "/3d-wall-painting-vadodara" },
 ];
 
-// AC Types
-const acTypes = [
-  { name: "Split AC Repair", href: "/split-ac-repair-vadodara" },
-  { name: "Window AC Repair", href: "/window-ac-repair-vadodara" },
-  { name: "Cassette AC Repair", href: "/cassette-ac-repair-vadodara" },
-  { name: "Ductable AC", href: "/ductable-ac-vadodara" },
-  { name: "Tower AC", href: "/tower-ac-vadodara" },
-  { name: "Central AC Repair", href: "/central-ac-repair-vadodara" },
-  { name: "Panel AC Repair", href: "/panel-ac-repair-vadodara" },
-  { name: "Portable AC Repair", href: "/portable-ac-repair-vadodara" },
-  { name: "Package AC", href: "/package-ac-vadodara" },
-  { name: "Inverter AC Repair", href: "/inverter-ac-repair-vadodara" },
+// Civil & Masonry Services
+const civilServices = [
+  { name: "Civil Contractors", href: "/civil-contractors-vadodara" },
+  { name: "Home Renovation", href: "/home-renovation-vadodara" },
+  { name: "Kitchen Renovation", href: "/kitchen-renovation-vadodara" },
+  { name: "Bathroom Renovation", href: "/bathroom-renovation-vadodara" },
+  { name: "Masonry Contractors", href: "/masonry-contractors-vadodara" },
+  { name: "Tiles Fitting", href: "/tiles-fitting-vadodara" },
+  { name: "Plastering Work", href: "/plastering-work-vadodara" },
+  { name: "Kadiya Kam", href: "/kadiya-kam-vadodara" },
+  { name: "RCC Slab Casting", href: "/rcc-slab-casting-vadodara" },
+  { name: "Compound Wall", href: "/compound-wall-vadodara" },
 ];
 
-// AC Brands
-const acBrands = [
-  { name: "Daikin AC", href: "/daikin-service-vadodara" },
-  { name: "Voltas AC", href: "/voltas-ac-service-vadodara" },
-  { name: "Blue Star AC", href: "/bluestar-ac-service-vadodara" },
-  { name: "Carrier AC", href: "/carrier-ac-repair-vadodara" },
-  { name: "LG AC", href: "/lg-ac-service-vadodara" },
-  { name: "Samsung AC", href: "/samsung-ac-service-vadodara" },
-  { name: "Hitachi AC", href: "/hitachi-ac-repair-vadodara" },
-  { name: "O General AC", href: "/ogeneral-ac-service-vadodara" },
-  { name: "Panasonic AC", href: "/panasonic-ac-installation-vadodara" },
-  { name: "Godrej AC", href: "/godrej-ac-vadodara" },
+// Plumbing Services
+const plumbingServices = [
+  { name: "Plumbers", href: "/plumbers-vadodara" },
+  { name: "Emergency Plumber 24Hr", href: "/emergency-plumber-vadodara" },
+  { name: "Water Leakage Repair", href: "/water-leakage-repair-vadodara" },
+  { name: "Bathroom Fitting", href: "/bathroom-fitting-vadodara" },
+  { name: "Water Tank Cleaning", href: "/water-tank-cleaning-vadodara" },
+  { name: "Geyser Installation", href: "/geyser-installation-vadodara" },
+  { name: "RO Service", href: "/ro-service-vadodara" },
+  { name: "Drainage Cleaning", href: "/drainage-cleaning-vadodara" },
+  { name: "Blocked Drain Cleaning", href: "/blocked-drain-cleaning-vadodara" },
+  { name: "Toilet Repair", href: "/toilet-repair-vadodara" },
+];
+
+// Carpenter & Furniture Services
+const carpenterServices = [
+  { name: "Best Carpenter", href: "/carpenter-vadodara" },
+  { name: "Modular Kitchen", href: "/modular-kitchen-vadodara" },
+  { name: "Wardrobe Design", href: "/wardrobe-design-vadodara" },
+  { name: "Sofa Manufacturers", href: "/sofa-manufacturers-vadodara" },
+  { name: "Furniture Repair", href: "/furniture-repair-vadodara" },
+  { name: "Office Furniture", href: "/office-furniture-vadodara" },
+  { name: "Teak Wood Furniture", href: "/teak-wood-furniture-vadodara" },
+  { name: "Suthar Kam", href: "/suthar-kam-vadodara" },
+  { name: "TV Unit Design", href: "/tv-unit-vadodara" },
+  { name: "Double Bed Design", href: "/double-bed-design-vadodara" },
+];
+
+// Fabrication & Welding Services
+const fabricationServices = [
+  { name: "Fabrication Work", href: "/fabrication-vadodara" },
+  { name: "SS Railing", href: "/ss-railing-vadodara" },
+  { name: "Main Gate", href: "/main-gate-vadodara" },
+  { name: "Window Grill", href: "/window-grill-vadodara" },
+  { name: "Safety Door Grill", href: "/safety-door-grill-vadodara" },
+  { name: "Industrial Shed", href: "/industrial-shed-vadodara" },
+  { name: "Welding Services", href: "/welding-services-vadodara" },
+  { name: "Rolling Shutter", href: "/rolling-shutter-vadodara" },
+  { name: "Spiral Staircase", href: "/spiral-staircase-vadodara" },
+  { name: "PEB Structure", href: "/peb-structure-vadodara" },
+];
+
+// Solar Services
+const solarServices = [
+  { name: "Solar Maintenance", href: "/solar-maintenance-vadodara" },
+  { name: "Solar Panel Cleaning", href: "/solar-panel-cleaning-vadodara" },
+  { name: "Solar Inverter Repair", href: "/solar-inverter-repair-vadodara" },
+  { name: "Solar AMC", href: "/solar-amc-vadodara" },
+  { name: "Industrial Solar", href: "/industrial-solar-vadodara" },
+  { name: "Rooftop Solar", href: "/rooftop-solar-vadodara" },
+  { name: "Solar Plant AMC", href: "/solar-plant-amc-vadodara" },
+  { name: "Solar Efficiency Testing", href: "/solar-efficiency-testing-vadodara" },
 ];
 
 // Vadodara Areas
 const vadodaraAreas = [
-  { name: "Alkapuri", href: "/ac-repair-alkapuri-vadodara" },
-  { name: "Gotri", href: "/ac-repair-gotri-vadodara" },
-  { name: "Manjalpur", href: "/ac-repair-manjalpur-vadodara" },
-  { name: "Akota", href: "/ac-repair-akota-vadodara" },
-  { name: "Fatehgunj", href: "/ac-repair-fatehgunj-vadodara" },
-  { name: "Karelibaug", href: "/ac-repair-karelibaug-vadodara" },
-  { name: "Sayajigunj", href: "/ac-repair-sayajigunj-vadodara" },
-  { name: "Waghodia Road", href: "/ac-repair-waghodia-road-vadodara" },
-  { name: "Subhanpura", href: "/ac-repair-subhanpura-vadodara" },
-  { name: "Nizampura", href: "/ac-repair-nizampura-vadodara" },
-  { name: "Harni", href: "/ac-repair-harni-vadodara" },
-  { name: "Tarsali", href: "/ac-repair-tarsali-vadodara" },
-  { name: "Makarpura", href: "/ac-repair-makarpura-vadodara" },
-  { name: "Gorwa", href: "/ac-repair-gorwa-vadodara" },
-  { name: "Nandesari", href: "/ac-repair-nandesari-vadodara" },
-  { name: "Tandalja", href: "/ac-repair-tandalja-vadodara" },
-  { name: "Vasna", href: "/ac-repair-vasna-vadodara" },
-  { name: "Sama", href: "/ac-repair-sama-vadodara" },
-  { name: "Bhayli", href: "/ac-repair-bhayli-vadodara" },
-  { name: "Chhani", href: "/ac-repair-chhani-vadodara" },
+  { name: "Alkapuri", href: "/services-alkapuri-vadodara" },
+  { name: "Gotri", href: "/services-gotri-vadodara" },
+  { name: "Manjalpur", href: "/services-manjalpur-vadodara" },
+  { name: "Akota", href: "/services-akota-vadodara" },
+  { name: "Fatehgunj", href: "/services-fatehgunj-vadodara" },
+  { name: "Karelibaug", href: "/services-karelibaug-vadodara" },
+  { name: "Waghodia Road", href: "/services-waghodia-road-vadodara" },
+  { name: "Makarpura GIDC", href: "/services-makarpura-gidc-vadodara" },
+  { name: "Bhayli", href: "/services-bhayli-vadodara" },
+  { name: "Chhani", href: "/services-chhani-vadodara" },
+  { name: "Nandesari GIDC", href: "/services-nandesari-gidc-vadodara" },
+  { name: "Por Ramangamdi", href: "/services-por-ramangamdi-vadodara" },
 ];
 
-// More Vadodara Areas
+// More Areas
 const moreAreas = [
-  { name: "Ajwa Road", href: "/ac-repair-ajwa-road-vadodara" },
-  { name: "Gotri Road", href: "/ac-repair-gotri-road-vadodara" },
-  { name: "VIP Road", href: "/ac-repair-vip-road-vadodara" },
-  { name: "Diwalipura", href: "/ac-repair-diwalipura-vadodara" },
-  { name: "Ellora Park", href: "/ac-repair-ellora-park-vadodara" },
-  { name: "Race Course", href: "/ac-repair-race-course-vadodara" },
-  { name: "Pratapgunj", href: "/ac-repair-pratapgunj-vadodara" },
-  { name: "Lalbaug", href: "/ac-repair-lalbaug-vadodara" },
-  { name: "Raopura", href: "/ac-repair-raopura-vadodara" },
-  { name: "Dabhoi Road", href: "/ac-repair-dabhoi-road-vadodara" },
-  { name: "Padra Road", href: "/ac-repair-padra-road-vadodara" },
-  { name: "Sevasi", href: "/ac-repair-sevasi-vadodara" },
-  { name: "Atladara", href: "/ac-repair-atladara-vadodara" },
-  { name: "Manjusar", href: "/ac-repair-manjusar-vadodara" },
-  { name: "Haridham", href: "/ac-repair-haridham-vadodara" },
-  { name: "Soma Talav", href: "/ac-repair-soma-talav-vadodara" },
-  { name: "New Sama", href: "/ac-repair-new-sama-vadodara" },
-  { name: "Jetalpur Road", href: "/ac-repair-jetalpur-road-vadodara" },
-  { name: "Sun Pharma Road", href: "/ac-repair-sun-pharma-road-vadodara" },
-  { name: "GIDC Makarpura", href: "/ac-repair-gidc-makarpura-vadodara" },
-];
-
-// Gujarat Cities
-const cities = [
-  { name: "Ahmedabad", href: "/ac-repair-ahmedabad" },
-  { name: "Surat", href: "/ac-repair-surat" },
-  { name: "Bharuch", href: "/ac-repair-bharuch" },
-  { name: "Anand", href: "/ac-repair-anand" },
-  { name: "Ankleshwar", href: "/ac-repair-ankleshwar" },
-  { name: "Nadiad", href: "/ac-repair-nadiad" },
-  { name: "Gandhinagar", href: "/ac-repair-gandhinagar" },
-  { name: "Rajkot", href: "/ac-repair-rajkot" },
-  { name: "Halol", href: "/ac-repair-halol" },
-  { name: "Godhra", href: "/ac-repair-godhra" },
-  { name: "Dahej", href: "/ac-repair-dahej" },
-  { name: "Padra", href: "/ac-repair-padra" },
-  { name: "Karjan", href: "/ac-repair-karjan" },
-  { name: "Savli", href: "/ac-repair-savli" },
-  { name: "Dabhoi", href: "/ac-repair-dabhoi" },
-  { name: "Mehsana", href: "/ac-repair-mehsana" },
-  { name: "Bhavnagar", href: "/ac-repair-bhavnagar" },
-  { name: "Junagadh", href: "/ac-repair-junagadh" },
-  { name: "Navsari", href: "/ac-repair-navsari" },
-  { name: "Vapi", href: "/ac-repair-vapi" },
-];
-
-// Popular Problems & Services
-const popularServices = [
-  { name: "AC Not Cooling", href: "/ac-not-cooling-vadodara" },
-  { name: "AC Gas Leak Repair", href: "/ac-gas-leak-repair-vadodara" },
-  { name: "AC Water Leakage", href: "/ac-water-leakage-repair-vadodara" },
-  { name: "AC PCB Repair", href: "/ac-pcb-repair-vadodara" },
-  { name: "AC Compressor Repair", href: "/ac-compressor-vadodara" },
-  { name: "Emergency AC Repair", href: "/emergency-ac-repair-vadodara" },
-  { name: "24x7 AC Service", href: "/24x7-ac-service-vadodara" },
-  { name: "Commercial AC", href: "/commercial-ac-repair-vadodara" },
-  { name: "Industrial AC", href: "/industrial-ac-service-vadodara" },
-  { name: "Cold Room Service", href: "/cold-room-service-vadodara" },
-  { name: "Deep Freezer Repair", href: "/deep-freezer-repair-vadodara" },
-  { name: "Water Cooler Repair", href: "/water-cooler-repair-vadodara" },
-];
-
-// AC Tonnage
-const tonnageServices = [
-  { name: "1 Ton AC Repair", href: "/1-ton-ac-repair-vadodara" },
-  { name: "1.5 Ton AC Service", href: "/1-5-ton-ac-service-vadodara" },
-  { name: "2 Ton AC Repair", href: "/2-ton-ac-repair-vadodara" },
-  { name: "3 Ton AC Service", href: "/3-ton-ac-service-vadodara" },
-  { name: "5 Ton AC Service", href: "/5-ton-ac-service-vadodara" },
-];
-
-// HVAC & Commercial
-const hvacServices = [
-  { name: "VRF Installation", href: "/vrf-installation-vadodara" },
-  { name: "Duct Cleaning", href: "/ac-duct-cleaning-vadodara" },
-  { name: "Chiller Plant Service", href: "/chiller-plant-service-vadodara" },
-  { name: "AHU Repair", href: "/ahu-repair-vadodara" },
-  { name: "Cooling Tower Service", href: "/cooling-tower-service-vadodara" },
-  { name: "HVAC Maintenance", href: "/hvac-maintenance-vadodara" },
+  { name: "Ajwa Road", href: "/services-ajwa-road-vadodara" },
+  { name: "Gotri Road", href: "/services-gotri-road-vadodara" },
+  { name: "Subhanpura", href: "/services-subhanpura-vadodara" },
+  { name: "Nizampura", href: "/services-nizampura-vadodara" },
+  { name: "Harni", href: "/services-harni-vadodara" },
+  { name: "Tarsali", href: "/services-tarsali-vadodara" },
+  { name: "Gorwa", href: "/services-gorwa-vadodara" },
+  { name: "Tandalja", href: "/services-tandalja-vadodara" },
+  { name: "Vasna", href: "/services-vasna-vadodara" },
+  { name: "Sama", href: "/services-sama-vadodara" },
+  { name: "Savli Manjusar GIDC", href: "/services-savli-manjusar-vadodara" },
+  { name: "Ranoli GIDC", href: "/services-ranoli-gidc-vadodara" },
+  { name: "Karjan", href: "/services-karjan-vadodara" },
+  { name: "Padra", href: "/services-padra-vadodara" },
+  { name: "Jambusar", href: "/services-jambusar-vadodara" },
 ];
 
 // Quick Links
@@ -166,35 +134,48 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12">
+                <svg viewBox="0 0 32 32" className="w-full h-full">
+                  <defs>
+                    <linearGradient id="footerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: "#f97316"}} />
+                      <stop offset="100%" style={{stopColor: "#ea580c"}} />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="16" cy="16" r="15" fill="url(#footerLogoGrad)" />
+                  <path d="M16 6 L6 14 L8 14 L8 24 L24 24 L24 14 L26 14 Z" fill="#ffffff" />
+                  <rect x="14" y="17" width="4" height="7" fill="url(#footerLogoGrad)" rx="0.5" />
+                  <rect x="9" y="15" width="3" height="3" fill="url(#footerLogoGrad)" rx="0.5" />
+                  <rect x="20" y="15" width="3" height="3" fill="url(#footerLogoGrad)" rx="0.5" />
+                </svg>
               </div>
               <div>
-                <h3 className="text-xl font-bold">Atlas Aircon</h3>
-                <p className="text-xs text-gray-400">Est. 2004</p>
+                <h3 className="text-xl font-bold">Vadodara <span className="text-orange-500">Mistry</span></h3>
+                <p className="text-xs text-gray-400">Home Services You Can Trust</p>
               </div>
             </div>
             <p className="text-gray-400 mb-4">
-              Professional AC installation, service & repair in Vadodara. 
-              Trusted by 5000+ customers with 20+ years of experience.
+              Your trusted home services partner in Vadodara. Expert POP ceiling, painting, 
+              civil work, plumbing, carpentry, fabrication & solar services. 10+ years experience, 
+              5000+ happy customers.
             </p>
             <div className="flex flex-col gap-3">
-              <a href="tel:+919727257141" className="flex items-center gap-2 text-gray-300 hover:text-white">
-                <Phone size={18} className="text-blue-500" />
+              <a href="tel:+917600337866" className="flex items-center gap-2 text-gray-300 hover:text-white">
+                <Phone size={18} className="text-orange-500" />
                 +91 97272 57141
               </a>
-              <a href="mailto:atlasaircon1@gmail.com" className="flex items-center gap-2 text-gray-300 hover:text-white">
-                <Mail size={18} className="text-blue-500" />
-                atlasaircon1@gmail.com
+              <a href="mailto:info@vadodaramistry.com" className="flex items-center gap-2 text-gray-300 hover:text-white">
+                <Mail size={18} className="text-orange-500" />
+                info@vadodaramistry.com
               </a>
               <div className="flex items-start gap-2 text-gray-300">
-                <MapPin size={18} className="text-blue-500 mt-1 flex-shrink-0" />
-                <span>Sayajigunj, Vadodara, Gujarat 390005</span>
+                <MapPin size={18} className="text-orange-500 mt-1 flex-shrink-0" />
+                <span>Vadodara, Gujarat 390005</span>
               </div>
               <div className="flex items-center gap-2 text-gray-300">
-                <Clock size={18} className="text-blue-500" />
-                Mon-Sat: 9AM-8PM | Sun: 10AM-6PM
+                <Clock size={18} className="text-orange-500" />
+                Mon-Sat: 8AM-8PM | Sun: 9AM-6PM
               </div>
             </div>
 
@@ -204,7 +185,7 @@ export default function Footer() {
               <ul className="flex flex-wrap gap-x-4 gap-y-2">
                 {quickLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-gray-400 hover:text-blue-400 transition">
+                    <Link href={link.href} className="text-gray-400 hover:text-orange-400 transition">
                       {link.name}
                     </Link>
                   </li>
@@ -213,13 +194,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Painting & POP */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Our Services</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Painting & POP</h4>
             <ul className="space-y-2">
-              {services.map((service) => (
+              {paintingServices.map((service) => (
                 <li key={service.href}>
-                  <Link href={service.href} className="text-gray-400 hover:text-blue-400 transition text-sm">
+                  <Link href={service.href} className="text-gray-400 hover:text-orange-400 transition text-sm">
                     {service.name}
                   </Link>
                 </li>
@@ -227,28 +208,28 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* AC Types */}
+          {/* Civil Work */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">AC Types</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Civil Work</h4>
             <ul className="space-y-2">
-              {acTypes.map((type) => (
-                <li key={type.href}>
-                  <Link href={type.href} className="text-gray-400 hover:text-blue-400 transition text-sm">
-                    {type.name}
+              {civilServices.map((service) => (
+                <li key={service.href}>
+                  <Link href={service.href} className="text-gray-400 hover:text-orange-400 transition text-sm">
+                    {service.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* AC Brands */}
+          {/* Plumbing */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">AC Brands</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Plumbing</h4>
             <ul className="space-y-2">
-              {acBrands.map((brand) => (
-                <li key={brand.href}>
-                  <Link href={brand.href} className="text-gray-400 hover:text-blue-400 transition text-sm">
-                    {brand.name}
+              {plumbingServices.map((service) => (
+                <li key={service.href}>
+                  <Link href={service.href} className="text-gray-400 hover:text-orange-400 transition text-sm">
+                    {service.name}
                   </Link>
                 </li>
               ))}
@@ -257,101 +238,83 @@ export default function Footer() {
 
           {/* Vadodara Areas */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Vadodara Areas</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Service Areas</h4>
             <ul className="space-y-2">
-              {vadodaraAreas.slice(0, 12).map((area) => (
+              {vadodaraAreas.slice(0, 10).map((area) => (
                 <li key={area.href}>
-                  <Link href={area.href} className="text-gray-400 hover:text-blue-400 transition text-sm">
+                  <Link href={area.href} className="text-gray-400 hover:text-orange-400 transition text-sm">
                     {area.name}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/areas" className="text-blue-400 hover:text-blue-300 font-medium text-sm">
-                  View All 90+ Areas →
+                <Link href="/areas" className="text-orange-400 hover:text-orange-300 font-medium text-sm">
+                  View All Areas →
                 </Link>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* More Areas Row */}
+        {/* Carpenter & Furniture Row */}
         <div className="mt-10 pt-8 border-t border-gray-800">
-          <h4 className="text-lg font-semibold mb-4 text-white">More Vadodara Areas</h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-10 gap-3">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h4 className="text-lg font-semibold mb-4 text-white">Carpenter & Furniture</h4>
+              <div className="grid grid-cols-2 gap-2">
+                {carpenterServices.map((service) => (
+                  <Link 
+                    key={service.href} 
+                    href={service.href} 
+                    className="text-gray-400 hover:text-orange-400 transition text-sm"
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4 text-white">Fabrication & Welding</h4>
+              <div className="grid grid-cols-2 gap-2">
+                {fabricationServices.map((service) => (
+                  <Link 
+                    key={service.href} 
+                    href={service.href} 
+                    className="text-gray-400 hover:text-orange-400 transition text-sm"
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4 text-white">Solar Services</h4>
+              <div className="grid grid-cols-2 gap-2">
+                {solarServices.map((service) => (
+                  <Link 
+                    key={service.href} 
+                    href={service.href} 
+                    className="text-gray-400 hover:text-orange-400 transition text-sm"
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* More Areas Row */}
+        <div className="mt-6 pt-6 border-t border-gray-800">
+          <h4 className="text-lg font-semibold mb-4 text-white">More Service Areas</h4>
+          <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-8 gap-3">
             {moreAreas.map((area) => (
               <Link 
                 key={area.href} 
                 href={area.href} 
-                className="text-gray-400 hover:text-blue-400 transition text-sm"
+                className="text-gray-400 hover:text-orange-400 transition text-sm"
               >
                 {area.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Popular Services Row */}
-        <div className="mt-6 pt-6 border-t border-gray-800">
-          <h4 className="text-lg font-semibold mb-4 text-white">Popular Services</h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {popularServices.map((service) => (
-              <Link 
-                key={service.href} 
-                href={service.href} 
-                className="text-gray-400 hover:text-blue-400 transition text-sm"
-              >
-                {service.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* AC Tonnage & HVAC Row */}
-        <div className="mt-6 pt-6 border-t border-gray-800">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">AC By Tonnage</h4>
-              <div className="flex flex-wrap gap-3">
-                {tonnageServices.map((service) => (
-                  <Link 
-                    key={service.href} 
-                    href={service.href} 
-                    className="text-gray-400 hover:text-blue-400 transition text-sm"
-                  >
-                    {service.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">HVAC & Commercial</h4>
-              <div className="flex flex-wrap gap-3">
-                {hvacServices.map((service) => (
-                  <Link 
-                    key={service.href} 
-                    href={service.href} 
-                    className="text-gray-400 hover:text-blue-400 transition text-sm"
-                  >
-                    {service.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Cities Row */}
-        <div className="mt-6 pt-6 border-t border-gray-800">
-          <h4 className="text-lg font-semibold mb-4 text-white">Cities We Serve (Industrial & Commercial AC)</h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-10 gap-3">
-            {cities.map((city) => (
-              <Link 
-                key={city.href} 
-                href={city.href} 
-                className="text-gray-400 hover:text-blue-400 transition text-sm"
-              >
-                {city.name}
               </Link>
             ))}
           </div>
@@ -365,7 +328,7 @@ export default function Footer() {
             <span className="text-gray-400 text-sm">Follow Us:</span>
             <div className="flex gap-3">
               <a
-                href="https://www.facebook.com/atlasaircon"
+                href="https://www.facebook.com/vadodaramistry"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition"
@@ -376,7 +339,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.instagram.com/atlasaircon"
+                href="https://www.instagram.com/vadodaramistry"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-500 rounded-full flex items-center justify-center hover:opacity-90 transition"
@@ -387,18 +350,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.youtube.com/@atlasaircon"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition"
-                aria-label="YouTube"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
-              </a>
-              <a
-                href="https://wa.me/919727257141"
+                href="https://wa.me/917600337866"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition"
@@ -418,7 +370,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Atlas Aircon. All rights reserved.
+              © {new Date().getFullYear()} Vadodara Mistry. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
               <Link href="/about" className="text-gray-400 hover:text-white">

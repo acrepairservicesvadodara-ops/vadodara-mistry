@@ -1,13 +1,14 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, ArrowRight } from "lucide-react";
 import BookingForm from "@/components/BookingForm";
 
 export const metadata: Metadata = {
-  title: "AC Repair Service Areas in Vadodara | All Localities Covered",
-  description: "Atlas Aircon serves all areas of Vadodara for AC repair & service. Alkapuri, Gotri, Manjalpur, Akota, Fatehgunj, Karelibaug, and 40+ more areas. Same-day service available.",
+  title: "Home Service Areas in Vadodara | All Localities Covered",
+  description: "Vadodara Mistry serves all areas of Vadodara for home services. Alkapuri, Gotri, Manjalpur, Akota, Fatehgunj, Karelibaug, and 40+ more areas. Same-day service available.",
   alternates: {
-    canonical: "https://atlasaircons.com/areas",
+    canonical: "https://vadodaramistry.com/areas",
   },
 };
 
@@ -76,20 +77,30 @@ export default function AreasPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-16 md:py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative text-white py-16 md:py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
+            alt="Home services in Vadodara areas"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-600/90 to-orange-500/80" />
+        </div>
+        <div className="container mx-auto px-4 relative">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                AC Service Areas in <span className="text-yellow-400">Vadodara</span>
+                Home Service Areas in <span className="text-yellow-300">Vadodara</span>
               </h1>
-              <p className="text-xl text-blue-100">
-                We provide AC repair & service across all areas of Vadodara and nearby cities. 
-                Same-day service available in most locations.
+              <p className="text-xl text-orange-100">
+                We provide home services across all areas of Vadodara. 
+                Painting, plumbing, carpentry, civil work & more. Same-day service available.
               </p>
             </div>
             <div className="hidden md:block">
-              <BookingForm title="Book AC Service Now" />
+              <BookingForm title="Book Home Service Now" />
             </div>
           </div>
         </div>
@@ -213,14 +224,14 @@ export default function AreasPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+919727257141"
+              href="tel:+917600337866"
               className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"
             >
               <Phone size={22} />
               +91 97272 57141
             </a>
             <a
-              href="https://wa.me/919727257141"
+              href="https://wa.me/917600337866"
               className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"
             >
               WhatsApp Us

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff7ed"/>
+      <stop offset="100%" style="stop-color:#ffedd5"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  
+  <!-- Orange accent bar -->
+  <rect x="0" y="0" width="1200" height="8" fill="url(#orangeGrad)"/>
+  <rect x="0" y="622" width="1200" height="8" fill="url(#orangeGrad)"/>
+  
+  <!-- Logo Icon - House -->
+  <g transform="translate(80, 150)">
+    <circle cx="100" cy="100" r="100" fill="url(#orangeGrad)"/>
+    <path d="M100 30 L30 85 L45 85 L45 150 L155 150 L155 85 L170 85 Z" fill="#ffffff"/>
+    <rect x="85" y="105" width="30" height="45" fill="url(#orangeGrad)" rx="2"/>
+    <rect x="50" y="95" width="20" height="20" fill="url(#orangeGrad)" rx="2"/>
+    <rect x="130" y="95" width="20" height="20" fill="url(#orangeGrad)" rx="2"/>
+  </g>
+  
+  <!-- Brand Name -->
+  <text x="300" y="200" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" fill="#1f2937">Vadodara</text>
+  <text x="300" y="290" font-family="Arial, Helvetica, sans-serif" font-size="90" font-weight="800" fill="url(#orangeGrad)">MISTRY</text>
+  
+  <!-- Tagline -->
+  <text x="300" y="340" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#6b7280" letter-spacing="3">HOME SERVICES YOU CAN TRUST</text>
+  
+  <!-- Services -->
+  <g transform="translate(300, 400)">
+    <rect x="0" y="0" width="140" height="40" rx="20" fill="url(#orangeGrad)"/>
+    <text x="70" y="27" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Painting</text>
+    
+    <rect x="155" y="0" width="140" height="40" rx="20" fill="url(#orangeGrad)"/>
+    <text x="225" y="27" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Civil Work</text>
+    
+    <rect x="310" y="0" width="140" height="40" rx="20" fill="url(#orangeGrad)"/>
+    <text x="380" y="27" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Plumbing</text>
+    
+    <rect x="465" y="0" width="140" height="40" rx="20" fill="url(#orangeGrad)"/>
+    <text x="535" y="27" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Carpentry</text>
+    
+    <rect x="620" y="0" width="140" height="40" rx="20" fill="url(#orangeGrad)"/>
+    <text x="690" y="27" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Fabrication</text>
+  </g>
+  
+  <!-- Phone Number -->
+  <g transform="translate(300, 500)">
+    <rect x="0" y="0" width="350" height="60" rx="30" fill="#1f2937"/>
+    <text x="175" y="40" font-family="Arial, sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" font-weight="600">📞 +91 97272 57141</text>
+  </g>
+  
+  <!-- Website -->
+  <text x="300" y="590" font-family="Arial, sans-serif" font-size="20" fill="#9ca3af">vadodaramistry.com</text>
+</svg>

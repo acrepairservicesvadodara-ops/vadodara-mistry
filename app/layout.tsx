@@ -12,30 +12,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://atlasaircons.com"),
+  metadataBase: new URL("https://vadodaramistry.com"),
   title: {
-    default: "Atlas Aircon - AC Repair & Service in Vadodara | AC Installation Expert",
-    template: "%s | Atlas Aircon Vadodara"
+    default: "Vadodara Mistry - Best Home Services in Vadodara | Painter, Civil, Plumber, Carpenter, Fabricator",
+    template: "%s | Vadodara Mistry"
   },
-  description: "Best AC repair & service in Vadodara. Expert AC installation, AMC, gas refilling, chiller repair & HVAC solutions. 20+ years experience. Call +91 97272 57141 for same-day service.",
+  description: "Top-rated home services in Vadodara. Expert POP ceiling, painting, civil work, plumbing, carpentry, fabrication & solar services. Trusted mistry network. Call +91 97272 57141",
   keywords: [
-    "AC repair Vadodara",
-    "AC service Vadodara",
-    "AC installation Vadodara",
-    "AC AMC Vadodara",
-    "chiller repair Vadodara",
-    "HVAC service Vadodara",
-    "split AC repair",
-    "window AC service",
-    "central AC maintenance",
-    "AC gas refilling Vadodara",
-    "panel AC service",
-    "VRF VRV system",
-    "Atlas Aircon"
+    "Vadodara mistry",
+    "home services Vadodara",
+    "POP ceiling Vadodara",
+    "painter Vadodara",
+    "civil contractor Vadodara",
+    "plumber Vadodara",
+    "carpenter Vadodara",
+    "fabrication Vadodara",
+    "solar maintenance Vadodara",
+    "false ceiling Vadodara",
+    "home renovation Vadodara",
+    "kadiya kam Vadodara",
+    "suthar kam Vadodara",
+    "lohedar kam Vadodara"
   ],
-  authors: [{ name: "Atlas Aircon" }],
-  creator: "Atlas Aircon",
-  publisher: "Atlas Aircon",
+  authors: [{ name: "Vadodara Mistry" }],
+  creator: "Vadodara Mistry",
+  publisher: "Vadodara Mistry",
   robots: {
     index: true,
     follow: true,
@@ -50,43 +51,52 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://atlasaircons.com",
-    siteName: "Atlas Aircon",
-    title: "Atlas Aircon - Best AC Repair & Service in Vadodara",
-    description: "Professional AC repair, service & installation in Vadodara. 20+ years experience, 5000+ satisfied customers. Same-day service available.",
+    url: "https://vadodaramistry.com",
+    siteName: "Vadodara Mistry",
+    title: "Vadodara Mistry - Best Home Services in Vadodara",
+    description: "Professional home services - POP ceiling, painting, civil work, plumbing, carpentry, fabrication & solar. 10+ years experience, 5000+ happy customers.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Atlas Aircon - AC Repair Service Vadodara",
+        alt: "Vadodara Mistry - Home Services Expert",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Atlas Aircon - AC Repair & Service Vadodara",
-    description: "Expert AC repair, installation & maintenance in Vadodara. Call +91 97272 57141",
+    title: "Vadodara Mistry - Home Services Expert",
+    description: "Expert home services in Vadodara. Call +91 97272 57141",
     images: ["/og-image.jpg"],
   },
   verification: {
     google: "your-google-verification-code",
   },
   alternates: {
-    canonical: "https://atlasaircons.com",
+    canonical: "https://vadodaramistry.com",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.svg" },
+    ],
+  },
+  manifest: "/manifest.json",
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://atlasaircons.com",
-  name: "Atlas Aircon",
-  image: "https://atlasaircons.com/logo.png",
-  description: "Professional AC repair, service & installation company in Vadodara with 20+ years of experience.",
-  url: "https://atlasaircons.com",
-  telephone: "+919727257141",
-  email: "atlasaircon1@gmail.com",
+  "@id": "https://vadodaramistry.com",
+  name: "Vadodara Mistry",
+  image: "https://vadodaramistry.com/logo.png",
+  description: "Professional home services company in Vadodara offering POP ceiling, painting, civil work, plumbing, carpentry, fabrication & solar maintenance services.",
+  url: "https://vadodaramistry.com",
+  telephone: "+917600337866",
+  email: "info@vadodaramistry.com",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Sayajigunj",
@@ -104,62 +114,94 @@ const jsonLd = {
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "09:00",
+      opens: "08:00",
       closes: "20:00"
     },
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: "Sunday",
-      opens: "10:00",
+      opens: "09:00",
       closes: "18:00"
     }
   ],
   priceRange: "₹₹",
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "500",
+    ratingValue: "4.8",
+    reviewCount: "1500",
     bestRating: "5",
     worstRating: "1"
   },
   areaServed: [
     { "@type": "City", name: "Vadodara" },
-    { "@type": "City", name: "Ahmedabad" },
-    { "@type": "City", name: "Surat" },
-    { "@type": "City", name: "Bharuch" },
-    { "@type": "City", name: "Anand" },
-    { "@type": "City", name: "Rajkot" }
+    { "@type": "Place", name: "Alkapuri" },
+    { "@type": "Place", name: "Manjalpur" },
+    { "@type": "Place", name: "Gotri" },
+    { "@type": "Place", name: "Waghodia Road" },
+    { "@type": "Place", name: "Makarpura GIDC" }
   ],
   sameAs: [
-    "https://www.facebook.com/atlasaircon",
-    "https://www.instagram.com/atlasaircon"
+    "https://www.facebook.com/vadodaramistry",
+    "https://www.instagram.com/vadodaramistry"
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "AC Services",
+    name: "Home Services",
     itemListElement: [
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "AC Repair",
-          description: "Professional AC repair services for all brands"
+          name: "POP & False Ceiling",
+          description: "POP ceiling, gypsum ceiling, PVC panels installation"
         }
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "AC Installation",
-          description: "Expert AC installation with warranty"
+          name: "Painting Services",
+          description: "Interior, exterior, texture painting services"
         }
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "AC AMC",
-          description: "Annual maintenance contracts for AC"
+          name: "Civil Work",
+          description: "Construction, renovation, masonry services"
+        }
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Plumbing Services",
+          description: "Plumbing repair, installation, maintenance"
+        }
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Carpentry Services",
+          description: "Furniture making, repair, woodwork"
+        }
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Fabrication & Welding",
+          description: "MS/SS fabrication, gates, grills, industrial work"
+        }
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Solar Maintenance",
+          description: "Solar panel cleaning, repair, AMC services"
         }
       }
     ]

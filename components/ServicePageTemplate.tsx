@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, CheckCircle, Star, Clock, Shield, Award, MapPin, ArrowRight } from "lucide-react";
 import BookingForm from "@/components/BookingForm";
 
@@ -393,8 +394,18 @@ export default function ServicePageTemplate({ service, location, locationDisplay
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-16 md:py-24">
-        <div className="container mx-auto px-4">
+      <section className="relative text-white py-16 md:py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=80"
+            alt={`${config.title} service in ${locationDisplay}`}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 via-blue-800/90 to-blue-700/85" />
+        </div>
+        <div className="container mx-auto px-4 relative">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
@@ -409,7 +420,7 @@ export default function ServicePageTemplate({ service, location, locationDisplay
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <a
-                  href="tel:+919727257141"
+                  href="tel:+917600337866"
                   className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
                 >
                   <Phone size={22} />
@@ -581,14 +592,14 @@ export default function ServicePageTemplate({ service, location, locationDisplay
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+919727257141"
+              href="tel:+917600337866"
               className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"
             >
               <Phone size={22} />
               +91 97272 57141
             </a>
             <a
-              href="https://wa.me/919727257141"
+              href="https://wa.me/917600337866"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"

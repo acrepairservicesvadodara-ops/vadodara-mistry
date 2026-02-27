@@ -415,14 +415,14 @@ export default function ${funcName}() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <a
-                  href="tel:+919727257141"
+                  href="tel:+917600337866"
                   className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
                 >
                   <Phone size={22} />
                   +91 97272 57141
                 </a>
                 <a
-                  href="https://wa.me/919727257141"
+                  href="https://wa.me/917600337866"
                   className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition"
                 >
                   WhatsApp Us
@@ -603,7 +603,7 @@ export default function ${funcName}() {
             Same-day service available. Call now!
           </p>
           <a
-            href="tel:+919727257141"
+            href="tel:+917600337866"
             className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition"
           >
             <Phone size={22} />

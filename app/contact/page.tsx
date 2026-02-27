@@ -1,11 +1,12 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Atlas Aircon | AC Repair Service Vadodara | +91 97272 57141",
-  description: "Contact Atlas Aircon for AC repair & service in Vadodara. Call +91 97272 57141 or email atlasaircon1@gmail.com. Same-day service available.",
+  title: "Contact Vadodara Mistry | Home Services | +91 76003 37866",
+  description: "Contact Vadodara Mistry for home services in Vadodara. Call +91 76003 37866 or WhatsApp us. Same-day service available.",
   alternates: {
-    canonical: "https://atlasaircons.com/contact",
+    canonical: "https://vadodaramistry.com/contact",
   },
 };
 
@@ -13,13 +14,23 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-16 md:py-20">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative text-white py-16 md:py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80"
+            alt="Contact Vadodara Mistry"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-600/90 to-orange-500/80" />
+        </div>
+        <div className="container mx-auto px-4 text-center relative">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Contact <span className="text-yellow-400">Atlas Aircon</span>
+            Contact <span className="text-yellow-300">Vadodara Mistry</span>
           </h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Get in touch for AC repair, service, or installation. 
+          <p className="text-xl text-orange-100 max-w-2xl mx-auto">
+            Get in touch for painting, plumbing, carpentry, civil work & more. 
             We're here to help 7 days a week.
           </p>
         </div>
@@ -30,7 +41,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             <a
-              href="tel:+919727257141"
+              href="tel:+917600337866"
               className="bg-blue-50 hover:bg-blue-100 p-6 rounded-xl text-center transition group"
             >
               <div className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
@@ -41,7 +52,7 @@ export default function ContactPage() {
             </a>
             
             <a
-              href="https://wa.me/919727257141"
+              href="https://wa.me/917600337866"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-50 hover:bg-green-100 p-6 rounded-xl text-center transition group"
@@ -250,7 +261,7 @@ export default function ContactPage() {
           <h2 className="text-2xl font-bold mb-4">Need Urgent AC Repair?</h2>
           <p className="text-blue-100 mb-6">Call now for same-day service in Vadodara!</p>
           <a
-            href="tel:+919727257141"
+            href="tel:+917600337866"
             className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition"
           >
             <Phone size={22} />
