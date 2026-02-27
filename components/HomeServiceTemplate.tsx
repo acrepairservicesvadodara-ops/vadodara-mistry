@@ -10,12 +10,15 @@ interface ServiceConfig {
   heroTitle: string;
   heroDescription: string;
   features: string[];
-  pricing: { service: string; price: string }[];
   process: { step: number; title: string; description: string }[];
   faqs: { question: string; answer: string }[];
   relatedServices: { name: string; href: string }[];
   areas: { name: string; href: string }[];
   category: "painting" | "civil" | "plumbing" | "carpenter" | "fabrication" | "solar";
+  // Rich content for SEO
+  expertise?: string[];
+  benefits?: { title: string; description: string }[];
+  serviceDescription?: string;
 }
 
 interface HomeServiceTemplateProps {
@@ -138,40 +141,66 @@ export default function HomeServiceTemplate({ config, slug }: HomeServiceTemplat
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {config.title} Rates in Vadodara
-            </h2>
-            <p className="text-gray-600">Transparent pricing with no hidden charges</p>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-              <table className="w-full">
-                <thead className="bg-orange-600 text-white">
-                  <tr>
-                    <th className="px-6 py-4 text-left font-semibold">Service</th>
-                    <th className="px-6 py-4 text-right font-semibold">Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {config.pricing.map((item, idx) => (
-                    <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                      <td className="px-6 py-4 text-gray-900">{item.service}</td>
-                      <td className="px-6 py-4 text-right font-semibold text-orange-600">{item.price}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+      {/* About Our Service Section */}
+      {config.serviceDescription && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">
+                About Our {config.title}
+              </h2>
+              <div className="prose prose-lg max-w-none text-gray-600">
+                <p className="whitespace-pre-line leading-relaxed">{config.serviceDescription}</p>
+              </div>
             </div>
-            <p className="text-center text-sm text-gray-500 mt-4">
-              * Prices may vary based on work requirements. Contact us for exact quotation.
-            </p>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* Our Expertise Section */}
+      {config.expertise && config.expertise.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Our {config.title} Expertise
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Comprehensive services covering all aspects of {config.title.toLowerCase()}
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {config.expertise.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  <span className="text-gray-800">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Benefits Section */}
+      {config.benefits && config.benefits.length > 0 && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Benefits of Professional {config.title}
+              </h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {config.benefits.map((benefit, idx) => (
+                <div key={idx} className="bg-white p-6 rounded-xl shadow-sm">
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">{benefit.title}</h3>
+                  <p className="text-gray-600">{benefit.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Process Section */}
       <section className="py-16 bg-white">

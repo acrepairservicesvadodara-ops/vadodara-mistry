@@ -34,16 +34,6 @@ const config = {
     "Distemper & Emulsion",
     "POP Cornice Design",
   ],
-  pricing: [
-    { service: "Interior Painting (per sq.ft)", price: "₹12 - ₹18" },
-    { service: "Exterior Painting (per sq.ft)", price: "₹15 - ₹25" },
-    { service: "Texture Paint (per sq.ft)", price: "₹25 - ₹45" },
-    { service: "POP False Ceiling (per sq.ft)", price: "₹75 - ₹120" },
-    { service: "Gypsum Ceiling (per sq.ft)", price: "₹85 - ₹140" },
-    { service: "Wall Putty + Primer (per sq.ft)", price: "₹8 - ₹12" },
-    { service: "POP Cornice (per running ft)", price: "₹45 - ₹80" },
-    { service: "Enamel Painting (per sq.ft)", price: "₹35 - ₹50" },
-  ],
   process: [
     { step: 1, title: "Site Visit", description: "Free measurement & consultation" },
     { step: 2, title: "Quotation", description: "Detailed estimate provided" },

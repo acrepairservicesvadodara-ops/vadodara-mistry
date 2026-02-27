@@ -34,16 +34,6 @@ const config = {
     "Kitchen Sink Fitting",
     "Water Line Connection",
   ],
-  pricing: [
-    { service: "Tap Installation", price: "₹150 - ₹300" },
-    { service: "Pipe Repair (per point)", price: "₹300 - ₹500" },
-    { service: "Complete Bathroom Fitting", price: "₹2,500 onwards" },
-    { service: "Drainage Cleaning", price: "₹500 - ₹1,500" },
-    { service: "Geyser Installation", price: "₹800 - ₹1,200" },
-    { service: "Water Tank Installation", price: "₹1,500 onwards" },
-    { service: "Toilet Installation", price: "₹1,000 - ₹2,000" },
-    { service: "Water Pump Repair", price: "₹500 onwards" },
-  ],
   process: [
     { step: 1, title: "Book Service", description: "Call or WhatsApp us" },
     { step: 2, title: "Inspection", description: "Our plumber inspects the issue" },

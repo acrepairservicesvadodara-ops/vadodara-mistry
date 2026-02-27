@@ -34,16 +34,6 @@ const config = {
     "Compound Wall Construction",
     "Stone & Marble Fitting",
   ],
-  pricing: [
-    { service: "Floor Tile Fitting (per sq.ft)", price: "₹25 - ₹40" },
-    { service: "Wall Tile Fitting (per sq.ft)", price: "₹30 - ₹50" },
-    { service: "Bathroom Renovation (complete)", price: "₹25,000 onwards" },
-    { service: "Brick Wall (per sq.ft)", price: "₹45 - ₹70" },
-    { service: "Plastering Work (per sq.ft)", price: "₹20 - ₹35" },
-    { service: "Waterproofing (per sq.ft)", price: "₹35 - ₹80" },
-    { service: "Marble Fitting (per sq.ft)", price: "₹40 - ₹60" },
-    { service: "Complete Room Renovation", price: "₹50,000 onwards" },
-  ],
   process: [
     { step: 1, title: "Site Inspection", description: "Free site visit and assessment" },
     { step: 2, title: "Planning & Quote", description: "Detailed work plan with cost estimate" },

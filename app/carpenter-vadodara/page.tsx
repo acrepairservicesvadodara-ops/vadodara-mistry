@@ -34,16 +34,6 @@ const config = {
     "Sofa Repair & Reupholstery",
     "Custom Furniture Design",
   ],
-  pricing: [
-    { service: "Modular Kitchen (per sq.ft)", price: "₹800 - ₹1,800" },
-    { service: "Wardrobe (sliding, per sq.ft)", price: "₹650 - ₹1,200" },
-    { service: "TV Unit (complete)", price: "₹8,000 onwards" },
-    { service: "Wooden Door (with fitting)", price: "₹4,500 onwards" },
-    { service: "Bed with Storage (double)", price: "₹18,000 onwards" },
-    { service: "Kitchen Cabinet (per sq.ft)", price: "₹550 - ₹1,000" },
-    { service: "Door Lock Installation", price: "₹150 - ₹300" },
-    { service: "Furniture Polish (per piece)", price: "₹500 onwards" },
-  ],
   process: [
     { step: 1, title: "Discussion", description: "Understand your requirements" },
     { step: 2, title: "Design", description: "Create design with measurements" },

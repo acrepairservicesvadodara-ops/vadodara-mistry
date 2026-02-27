@@ -34,16 +34,6 @@ const config = {
     "Solar Street Light",
     "Solar System AMC",
   ],
-  pricing: [
-    { service: "1kW Solar System", price: "₹55,000 - ₹65,000" },
-    { service: "2kW Solar System", price: "₹95,000 - ₹1,10,000" },
-    { service: "3kW Solar System", price: "₹1,40,000 - ₹1,60,000" },
-    { service: "5kW Solar System", price: "₹2,20,000 - ₹2,50,000" },
-    { service: "10kW Solar System", price: "₹4,20,000 - ₹4,80,000" },
-    { service: "Solar Panel Cleaning (per panel)", price: "₹50 - ₹100" },
-    { service: "Solar Inverter (per kW)", price: "₹8,000 - ₹12,000" },
-    { service: "Battery (per kWh)", price: "₹10,000 - ₹15,000" },
-  ],
   process: [
     { step: 1, title: "Site Survey", description: "Rooftop assessment & load analysis" },
     { step: 2, title: "Design", description: "System design & quotation" },

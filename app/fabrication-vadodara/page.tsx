@@ -34,16 +34,6 @@ const config = {
     "Balcony Railing",
     "Rolling Shutter",
   ],
-  pricing: [
-    { service: "MS Main Gate (per kg)", price: "₹75 - ₹120" },
-    { service: "Window Grill (per sq.ft)", price: "₹80 - ₹150" },
-    { service: "SS Railing (per running ft)", price: "₹350 - ₹650" },
-    { service: "Safety Grill (per sq.ft)", price: "₹90 - ₹180" },
-    { service: "Shed Structure (per sq.ft)", price: "₹60 - ₹120" },
-    { service: "Iron Staircase (complete)", price: "₹15,000 onwards" },
-    { service: "Welding Repair", price: "₹300 onwards" },
-    { service: "Rolling Shutter (per sq.ft)", price: "₹100 - ₹180" },
-  ],
   process: [
     { step: 1, title: "Site Visit", description: "Measurement and design discussion" },
     { step: 2, title: "Design & Quote", description: "Custom design with pricing" },

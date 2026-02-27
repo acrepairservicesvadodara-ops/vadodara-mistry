@@ -9,6 +9,7 @@ import {
   areaKeywords,
   ServiceCategory,
 } from "@/lib/data";
+import { generateKeywordContent, categoryFAQs, categoryContent } from "@/lib/seo-content";
 import BookingForm from "@/components/BookingForm";
 import CallButton from "@/components/CallButton";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -81,98 +82,6 @@ export async function generateMetadata({
   };
 }
 
-// Category-specific pricing
-const categoryPricing: Record<ServiceCategory, { service: string; price: string; unit: string }[]> = {
-  painting: [
-    { service: "Interior Wall Painting", price: "₹12", unit: "per sq.ft" },
-    { service: "Exterior Painting", price: "₹15", unit: "per sq.ft" },
-    { service: "Texture Painting", price: "₹25", unit: "per sq.ft" },
-    { service: "POP False Ceiling", price: "₹75", unit: "per sq.ft" },
-    { service: "Gypsum Ceiling", price: "₹85", unit: "per sq.ft" },
-    { service: "Wall Putty + Primer", price: "₹8", unit: "per sq.ft" },
-  ],
-  civil: [
-    { service: "Floor Tile Fitting", price: "₹35", unit: "per sq.ft" },
-    { service: "Wall Tile Fitting", price: "₹40", unit: "per sq.ft" },
-    { service: "Bathroom Renovation", price: "₹35,000", unit: "onwards" },
-    { service: "Waterproofing", price: "₹45", unit: "per sq.ft" },
-    { service: "Marble/Granite Fitting", price: "₹60", unit: "per sq.ft" },
-    { service: "Plastering Work", price: "₹25", unit: "per sq.ft" },
-  ],
-  plumbing: [
-    { service: "Tap Installation", price: "₹150", unit: "per tap" },
-    { service: "Pipe Repair", price: "₹300", unit: "onwards" },
-    { service: "Bathroom Fitting", price: "₹2,500", unit: "complete" },
-    { service: "Water Tank Installation", price: "₹1,500", unit: "onwards" },
-    { service: "Drainage Cleaning", price: "₹500", unit: "per drain" },
-    { service: "Geyser Installation", price: "₹800", unit: "per unit" },
-  ],
-  carpenter: [
-    { service: "Modular Kitchen", price: "₹1,200", unit: "per sq.ft" },
-    { service: "Wardrobe", price: "₹900", unit: "per sq.ft" },
-    { service: "Door Installation", price: "₹2,500", unit: "per door" },
-    { service: "Window Frame", price: "₹350", unit: "per running ft" },
-    { service: "Furniture Repair", price: "₹500", unit: "onwards" },
-    { service: "TV Unit", price: "₹15,000", unit: "onwards" },
-  ],
-  fabrication: [
-    { service: "MS Grill", price: "₹120", unit: "per sq.ft" },
-    { service: "SS Railing", price: "₹450", unit: "per running ft" },
-    { service: "Main Gate", price: "₹18,000", unit: "onwards" },
-    { service: "Window Grill", price: "₹150", unit: "per sq.ft" },
-    { service: "Iron Door", price: "₹8,000", unit: "onwards" },
-    { service: "Shed/Canopy", price: "₹85", unit: "per sq.ft" },
-  ],
-  solar: [
-    { service: "1kW Solar System", price: "₹55,000", unit: "complete" },
-    { service: "2kW Solar System", price: "₹1,00,000", unit: "complete" },
-    { service: "3kW Solar System", price: "₹1,45,000", unit: "complete" },
-    { service: "5kW Solar System", price: "₹2,30,000", unit: "complete" },
-    { service: "Solar Panel Cleaning", price: "₹500", unit: "per panel" },
-    { service: "Inverter Installation", price: "₹5,000", unit: "onwards" },
-  ],
-};
-
-// Category-specific FAQs
-const categoryFAQs: Record<ServiceCategory, { question: string; answer: string }[]> = {
-  painting: [
-    { question: "What is the cost of painting per sq.ft in Vadodara?", answer: "Interior painting starts from ₹12/sq.ft and exterior from ₹15/sq.ft including primer and two coats of paint. Texture painting costs around ₹25/sq.ft." },
-    { question: "How long does house painting take?", answer: "A 2BHK apartment typically takes 4-5 days for complete interior painting including wall preparation, putty, primer, and two coats." },
-    { question: "Do you provide warranty on painting work?", answer: "Yes, we provide 1-year warranty on all painting work. Premium paints like Asian Paints Royale come with extended warranty." },
-    { question: "Can you work on weekends?", answer: "Yes, we work all 7 days. You can book painting services for weekends without extra charges." },
-  ],
-  civil: [
-    { question: "What is tile fitting cost in Vadodara?", answer: "Floor tile fitting costs ₹35-45/sq.ft and wall tiles cost ₹40-50/sq.ft depending on tile size and pattern complexity." },
-    { question: "How long does bathroom renovation take?", answer: "A complete bathroom renovation including tiles, fitting, and waterproofing takes 7-10 days." },
-    { question: "Do you provide waterproofing warranty?", answer: "Yes, we provide 5-year warranty on terrace waterproofing and 3-year warranty on bathroom waterproofing." },
-    { question: "What brands of tiles do you work with?", answer: "We work with all major brands including Kajaria, Somany, Johnson, Asian Granito, and imported tiles." },
-  ],
-  plumbing: [
-    { question: "Do you provide 24/7 plumbing service?", answer: "Yes, we provide emergency plumbing services 24/7 in Vadodara for pipe leaks, blockages, and urgent repairs." },
-    { question: "What is the visiting charge for plumber?", answer: "Our visiting charge is ₹200 which is adjustable against the work done. For AMC customers, there is no visiting charge." },
-    { question: "Do you install water purifiers?", answer: "Yes, we install all types of water purifiers including RO, UV, and gravity-based systems from all major brands." },
-    { question: "Can you fix concealed pipe leakage?", answer: "Yes, we use advanced techniques like pipe inspection cameras to detect and fix concealed pipe leakages with minimal damage." },
-  ],
-  carpenter: [
-    { question: "What is modular kitchen cost in Vadodara?", answer: "Modular kitchen costs range from ₹1,200-2,500/sq.ft depending on material (MDF, plywood, BWP) and finish type." },
-    { question: "Do you use termite-resistant plywood?", answer: "Yes, we use BWP (Boiling Water Proof) and marine plywood which are termite and water resistant. We also apply termite treatment." },
-    { question: "How long does wardrobe making take?", answer: "A standard 8x7 ft wardrobe takes 5-7 days to complete including design, fabrication, and installation." },
-    { question: "Do you provide furniture repair service?", answer: "Yes, we repair all types of wooden furniture including polish, veneer replacement, and structural repairs." },
-  ],
-  fabrication: [
-    { question: "What is SS railing cost per foot?", answer: "SS 304 grade railing costs ₹450-600 per running foot and SS 202 costs ₹350-450 per running foot including installation." },
-    { question: "How long does gate fabrication take?", answer: "A standard main gate takes 7-10 days including design finalization, fabrication, and installation." },
-    { question: "Do you provide powder coating?", answer: "Yes, all MS fabrication work includes powder coating at no extra cost. We offer multiple color options." },
-    { question: "Can you make designer gates?", answer: "Yes, we create custom designer gates with CNC cutting, laser patterns, and combination of MS with SS elements." },
-  ],
-  solar: [
-    { question: "What is 1kW solar system cost in Vadodara?", answer: "A 1kW on-grid solar system costs around ₹55,000-65,000 including panels, inverter, mounting, and installation. Government subsidy of ₹14,588 is available." },
-    { question: "How much electricity does 3kW solar produce?", answer: "A 3kW system produces approximately 12-15 units per day or 360-450 units per month depending on sunlight conditions." },
-    { question: "What is the warranty on solar panels?", answer: "Solar panels come with 25-year performance warranty and 10-year product warranty. Inverters have 5-year warranty." },
-    { question: "Do you help with government subsidy?", answer: "Yes, we handle complete documentation for GUVNL/DISCOM net metering and PM Surya Ghar Yojana subsidy application." },
-  ],
-};
-
 export default async function KeywordPage({
   params,
 }: {
@@ -195,9 +104,10 @@ export default async function KeywordPage({
 
   const category = keyword.category;
   const config = categoryConfig[category];
-  const pricing = categoryPricing[category];
   const faqs = categoryFAQs[category];
   const images = categoryImages[category];
+  const content = categoryContent[category];
+  const keywordContent = generateKeywordContent(keyword, category);
 
   // Get related services from same category
   const relatedServices = allKeywords
@@ -273,38 +183,131 @@ export default async function KeywordPage({
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Detailed Introduction Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+              About {keyword.title} Services in Vadodara
+            </h2>
+            <div className="prose prose-lg max-w-none">
+              <p className="text-gray-700 leading-relaxed mb-6 whitespace-pre-line">
+                {keywordContent.introduction}
+              </p>
+              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                {keywordContent.detailedDescription}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Why Choose Vadodara Mistry for {keyword.title}?
+          </h2>
+          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {content.whyChooseUs.map((reason, idx) => (
+              <div key={idx} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                <span className="text-green-600 font-bold text-xl">✓</span>
+                <p className="text-gray-700">{reason}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service Process Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4">
-            {keyword.title} Price List in Vadodara
+            Our {keyword.title} Process
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            We follow a systematic approach to ensure quality results for every {keyword.title.toLowerCase()} project
+          </p>
+          <div className="max-w-4xl mx-auto space-y-6">
+            {content.serviceProcess.map((step, idx) => (
+              <div key={idx} className="bg-white rounded-xl p-6 shadow-sm flex gap-6">
+                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-orange-600">{idx + 1}</span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">{step.title}</h3>
+                  <p className="text-gray-600">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Benefits of Professional {keyword.title}
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {content.benefits.map((benefit, idx) => (
+              <div key={idx} className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="font-bold text-lg text-gray-900 mb-3">{benefit.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Expertise Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Our {config.title} Expertise
           </h2>
           <p className="text-center text-gray-600 mb-12">
-            Transparent pricing with no hidden charges
+            Comprehensive services covering all aspects of {config.title.toLowerCase()}
           </p>
-          <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
-            <table className="w-full">
-              <thead className={`${config.gradient} text-white`}>
-                <tr>
-                  <th className="py-4 px-6 text-left">Service</th>
-                  <th className="py-4 px-6 text-right">Price</th>
-                  <th className="py-4 px-6 text-right">Unit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricing.map((item, idx) => (
-                  <tr key={idx} className={idx % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                    <td className="py-4 px-6">{item.service}</td>
-                    <td className="py-4 px-6 text-right font-semibold text-orange-600">{item.price}</td>
-                    <td className="py-4 px-6 text-right text-gray-600">{item.unit}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {content.expertise.map((item, idx) => (
+              <div key={idx} className="bg-white p-4 rounded-lg text-center">
+                <span className="text-gray-800">{item}</span>
+              </div>
+            ))}
           </div>
-          <p className="text-center text-gray-500 mt-4 text-sm">
-            *Prices may vary based on material and work complexity. Contact us for exact quote.
-          </p>
+        </div>
+      </section>
+
+      {/* Materials We Use Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Quality Materials We Use
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {content.materials.map((material, idx) => (
+              <div key={idx} className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
+                <span className="text-orange-600">▸</span>
+                <span className="text-gray-700">{material}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Local Areas Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+              {keyword.title} Across Vadodara
+            </h2>
+            <p className="text-gray-600 leading-relaxed mb-8 whitespace-pre-line">
+              {keywordContent.localContext}
+            </p>
+          </div>
         </div>
       </section>
 
