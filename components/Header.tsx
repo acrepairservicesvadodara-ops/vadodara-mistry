@@ -7,8 +7,8 @@ import { Phone, Menu, X, ChevronDown, Paintbrush, Hammer, Wrench, Sofa, Sun, Set
 const paintingServices = [
   { name: "POP False Ceiling", href: "/pop-false-ceiling-vadodara" },
   { name: "Gypsum Ceiling", href: "/gypsum-false-ceiling-vadodara" },
-  { name: "PVC Ceiling Panels", href: "/pvc-ceiling-panels-vadodara" },
-  { name: "Texture Painting", href: "/texture-wall-painting-vadodara" },
+  { name: "PVC Ceiling Panels", href: "/pvc-ceiling-vadodara" },
+  { name: "Texture Painting", href: "/texture-painting-vadodara" },
   { name: "Interior Painting", href: "/interior-painting-vadodara" },
   { name: "Exterior Painting", href: "/exterior-painting-vadodara" },
   { name: "Waterproofing", href: "/waterproofing-vadodara" },
@@ -20,16 +20,16 @@ const civilServices = [
   { name: "Home Renovation", href: "/home-renovation-vadodara" },
   { name: "Kitchen Renovation", href: "/kitchen-renovation-vadodara" },
   { name: "Bathroom Renovation", href: "/bathroom-renovation-vadodara" },
-  { name: "Masonry Work", href: "/masonry-contractors-vadodara" },
-  { name: "Tiles Fitting", href: "/tiles-fitting-vadodara" },
-  { name: "Plastering Work", href: "/plastering-work-vadodara" },
+  { name: "Masonry Work", href: "/masonry-vadodara" },
+  { name: "Tiles Fitting", href: "/tile-fitting-vadodara" },
+  { name: "Plastering Work", href: "/plastering-vadodara" },
   { name: "Kadiya Kam", href: "/kadiya-kam-vadodara" },
 ];
 
 const plumbingServices = [
   { name: "Plumbers", href: "/plumbers-vadodara" },
   { name: "Emergency Plumber", href: "/emergency-plumber-vadodara" },
-  { name: "Water Leakage Repair", href: "/water-leakage-repair-vadodara" },
+  { name: "Water Leakage Repair", href: "/water-leak-repair-vadodara" },
   { name: "Bathroom Fitting", href: "/bathroom-fitting-vadodara" },
   { name: "Water Tank Cleaning", href: "/water-tank-cleaning-vadodara" },
   { name: "Geyser Installation", href: "/geyser-installation-vadodara" },
@@ -41,10 +41,10 @@ const carpenterServices = [
   { name: "Carpenters", href: "/carpenter-vadodara" },
   { name: "Modular Kitchen", href: "/modular-kitchen-vadodara" },
   { name: "Wardrobe Design", href: "/wardrobe-design-vadodara" },
-  { name: "Sofa Manufacturers", href: "/sofa-manufacturers-vadodara" },
+  { name: "Sofa Manufacturers", href: "/sofa-set-vadodara" },
   { name: "Furniture Repair", href: "/furniture-repair-vadodara" },
   { name: "Office Furniture", href: "/office-furniture-vadodara" },
-  { name: "Teak Wood Furniture", href: "/teak-wood-furniture-vadodara" },
+  { name: "Teak Wood Furniture", href: "/custom-furniture-vadodara" },
   { name: "Suthar Kam", href: "/suthar-kam-vadodara" },
 ];
 
@@ -53,9 +53,9 @@ const fabricationServices = [
   { name: "SS Railing", href: "/ss-railing-vadodara" },
   { name: "Main Gate", href: "/main-gate-vadodara" },
   { name: "Window Grill", href: "/window-grill-vadodara" },
-  { name: "Safety Door Grill", href: "/safety-door-grill-vadodara" },
+  { name: "Safety Door Grill", href: "/safety-door-vadodara" },
   { name: "Industrial Shed", href: "/industrial-shed-vadodara" },
-  { name: "Welding Services", href: "/welding-services-vadodara" },
+  { name: "Welding Services", href: "/welding-vadodara" },
   { name: "Rolling Shutter", href: "/rolling-shutter-vadodara" },
 ];
 
