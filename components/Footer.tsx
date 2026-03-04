@@ -161,9 +161,9 @@ export default function Footer() {
               5000+ happy customers.
             </p>
             <div className="flex flex-col gap-3">
-              <a href="tel:+917600337866" className="flex items-center gap-2 text-gray-300 hover:text-white">
+              <a href="tel:+919313982980" className="flex items-center gap-2 text-gray-300 hover:text-white">
                 <Phone size={18} className="text-orange-500" />
-                +91 76003 37866
+                +91 93139 82980
               </a>
               <a href="mailto:info@vadodaramistry.com" className="flex items-center gap-2 text-gray-300 hover:text-white">
                 <Mail size={18} className="text-orange-500" />
@@ -350,7 +350,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://wa.me/917600337866"
+                href="https://wa.me/919313982980"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition"

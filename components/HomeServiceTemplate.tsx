@@ -82,14 +82,14 @@ export default function HomeServiceTemplate({ config, slug }: HomeServiceTemplat
               </p>
               <div className="hidden md:flex flex-col sm:flex-row gap-4 mb-8">
                 <a
-                  href="tel:+917600337866"
+                  href="tel:+919313982980"
                   className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
                 >
                   <Phone size={22} />
-                  Call: +91 76003 37866
+                  Call: +91 93139 82980
                 </a>
                 <a
-                  href="https://wa.me/917600337866"
+                  href="https://wa.me/919313982980"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition"
@@ -349,14 +349,14 @@ export default function HomeServiceTemplate({ config, slug }: HomeServiceTemplat
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+917600337866"
+              href="tel:+919313982980"
               className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"
             >
               <Phone size={22} />
-              +91 76003 37866
+              +91 93139 82980
             </a>
             <a
-              href="https://wa.me/917600337866"
+              href="https://wa.me/919313982980"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"

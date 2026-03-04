@@ -3,7 +3,7 @@
 import { MessageCircle } from "lucide-react";
 
 export default function WhatsAppFloat() {
-  const phoneNumber = "917600337866";
+  const phoneNumber = "919313982980";
   const message = encodeURIComponent(
     "Hello Vadodara Mistry! I need home service. Please contact me."
   );

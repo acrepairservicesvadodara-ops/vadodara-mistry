@@ -82,11 +82,11 @@ export default function Header() {
             <span className="hidden md:inline">✉️ info@vadodaramistry.com</span>
           </div>
           <a
-            href="tel:+917600337866"
+            href="tel:+919313982980"
             className="flex items-center gap-2 font-semibold hover:text-orange-200 transition"
           >
             <Phone size={16} />
-            +91 76003 37866
+            +91 93139 82980
           </a>
         </div>
       </div>
@@ -281,7 +281,7 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden xl:block">
             <a
-              href="tel:+917600337866"
+              href="tel:+919313982980"
               className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg flex items-center gap-2"
             >
               <Phone size={18} />
@@ -426,10 +426,10 @@ export default function Header() {
               </Link>
               
               <a
-                href="tel:+917600337866"
+                href="tel:+919313982980"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold text-center"
               >
-                📞 Call Now: +91 76003 37866
+                📞 Call Now: +91 93139 82980
               </a>
             </div>
           </div>

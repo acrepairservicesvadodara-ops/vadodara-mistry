@@ -216,8 +216,8 @@ export default function AboutPage() {
             <div className="text-center">
               <Phone className="w-10 h-10 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Call Us</h3>
-              <a href="tel:+917600337866" className="text-orange-100 hover:text-white">
-                +91 76003 37866
+              <a href="tel:+919313982980" className="text-orange-100 hover:text-white">
+                +91 93139 82980
               </a>
             </div>
             <div className="text-center">
@@ -245,14 +245,14 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+917600337866"
+              href="tel:+919313982980"
               className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"
             >
               <Phone size={22} />
               Call Now
             </a>
             <a
-              href="https://wa.me/917600337866"
+              href="https://wa.me/919313982980"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition"

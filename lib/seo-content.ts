@@ -463,7 +463,7 @@ ${content.localExpertise}`,
 
 We understand Vadodara's unique requirements - from modern apartments to traditional bungalows, from residential properties to commercial establishments. Our ${titleLower} solutions are tailored to meet these diverse needs while adhering to local building standards and client preferences.`,
 
-    conclusion: `Ready to get started with ${titleLower} in Vadodara? Contact Vadodara Mistry today for a free consultation and quote. Call us at +91 76003 37866 or fill out our booking form, and our team will reach out within 30 minutes to discuss your requirements.
+    conclusion: `Ready to get started with ${titleLower} in Vadodara? Contact Vadodara Mistry today for a free consultation and quote. Call us at +91 93139 82980 or fill out our booking form, and our team will reach out within 30 minutes to discuss your requirements.
 
 With ${categoryContent[category].guarantee.join(', ')}, you can trust Vadodara Mistry for all your ${titleLower} needs. Experience the difference of working with Vadodara's most trusted home services provider.`,
   };
@@ -523,7 +523,7 @@ export const categoryFAQs: Record<ServiceCategory, { question: string; answer: s
 
 // Generate rich meta description
 export function generateMetaDescription(keyword: { title: string; description: string }, category: ServiceCategory): string {
-  return `Professional ${keyword.title.toLowerCase()} services in Vadodara by Vadodara Mistry. ${keyword.description}. Experienced team, quality materials, warranty provided. Call +91 76003 37866 for free quote.`;
+  return `Professional ${keyword.title.toLowerCase()} services in Vadodara by Vadodara Mistry. ${keyword.description}. Experienced team, quality materials, warranty provided. Call +91 93139 82980 for free quote.`;
 }
 
 // Generate schema markup data
@@ -534,7 +534,7 @@ export function generateSchemaData(keyword: { title: string; description: string
     "name": "Vadodara Mistry",
     "description": `${keyword.description} in Vadodara`,
     "url": `https://vadodaramistri.com/${keyword.slug}`,
-    "telephone": "+917600337866",
+    "telephone": "+919313982980",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Vadodara",
@@ -549,5 +549,180 @@ export function generateSchemaData(keyword: { title: string; description: string
     "areaServed": "Vadodara",
     "serviceType": keyword.title,
     "priceRange": "$$"
+  };
+}
+
+// Generate 10 unique FAQs per page based on keyword and category
+export function generateUniqueFAQs(
+  keyword: { title: string; description: string; slug: string },
+  category: ServiceCategory
+): { question: string; answer: string }[] {
+  const title = keyword.title;
+  const titleLower = title.toLowerCase();
+  
+  // Base FAQs from category
+  const baseFAQs = categoryFAQs[category] || [];
+  
+  // Generate keyword-specific FAQs
+  const keywordSpecificFAQs: { question: string; answer: string }[] = [
+    {
+      question: `What is the cost of ${titleLower} in Vadodara?`,
+      answer: `The cost of ${titleLower} in Vadodara varies based on the scope of work, quality of materials, and specific requirements. At Vadodara Mistry, we provide free on-site inspection and detailed quotation with no hidden charges. Call us at +91 93139 82980 for a personalized quote tailored to your needs.`
+    },
+    {
+      question: `How long does ${titleLower} work take to complete?`,
+      answer: `The timeline for ${titleLower} depends on the project size and complexity. A standard residential project typically takes 3-7 days, while larger commercial projects may take 2-3 weeks. We provide a precise timeline during our initial consultation and stick to our commitments.`
+    },
+    {
+      question: `Do you provide warranty for ${titleLower} services?`,
+      answer: `Yes, Vadodara Mistry provides comprehensive warranty on all ${titleLower} work. The warranty period ranges from 1-5 years depending on the type of work. Our warranty covers workmanship defects and material failures, giving you complete peace of mind.`
+    },
+    {
+      question: `Which areas in Vadodara do you serve for ${titleLower}?`,
+      answer: `We provide ${titleLower} services across all areas of Vadodara including Alkapuri, Gotri, Manjalpur, Akota, Bhayli, Karelibaug, Waghodia Road, Makarpura, Fatehgunj, Sayajigunj, Tarsali, Subhanpura, Race Course, and 30+ more localities. No location in Vadodara is too far for us.`
+    },
+    {
+      question: `Why should I choose Vadodara Mistry for ${titleLower}?`,
+      answer: `Vadodara Mistry offers 10+ years of experience, a team of 50+ skilled professionals, premium quality materials, transparent pricing, and post-service warranty. We've served 10,000+ happy customers in Vadodara and have a 4.8/5 Google rating. Our single-point contact ensures hassle-free service.`
+    },
+    {
+      question: `Can I book ${titleLower} service on weekends or holidays?`,
+      answer: `Absolutely! Vadodara Mistry works 7 days a week, including weekends and most public holidays. We understand your busy schedule and offer flexible timing without any additional charges for weekend bookings.`
+    },
+    {
+      question: `What materials and brands do you use for ${titleLower}?`,
+      answer: `We use only premium quality materials from trusted brands for ${titleLower}. Our material selection is based on durability, performance, and value for money. We're transparent about material choices and can source specific brands based on your preference and budget.`
+    },
+    {
+      question: `Do you provide free quotation for ${titleLower}?`,
+      answer: `Yes, we provide completely free, no-obligation quotations for all ${titleLower} projects. Our expert will visit your site, understand your requirements, assess the work involved, and provide a detailed written quotation within 24 hours of the visit.`
+    },
+    {
+      question: `How do I book ${titleLower} service with Vadodara Mistry?`,
+      answer: `Booking is simple! You can call us at +91 93139 82980, send a WhatsApp message, or fill the booking form on our website. Our team will contact you within 30 minutes to understand your requirements and schedule a convenient visit.`
+    },
+    {
+      question: `Is ${titleLower} available for commercial projects in Vadodara?`,
+      answer: `Yes, we cater to both residential and commercial ${titleLower} projects in Vadodara. From individual homes to offices, shops, showrooms, factories, and industrial establishments - our experienced team handles projects of all scales with equal dedication.`
+    },
+  ];
+  
+  // Combine base FAQs with keyword-specific ones and return 10 unique FAQs
+  const allFAQs = [...keywordSpecificFAQs, ...baseFAQs];
+  
+  // Return first 10 unique FAQs
+  return allFAQs.slice(0, 10);
+}
+
+// Generate 700+ words unique content for each page
+export function generateExtendedContent(
+  keyword: { title: string; description: string; slug: string },
+  category: ServiceCategory
+): {
+  introSection: string;
+  detailedSection: string;
+  processSection: string;
+  whyUsSection: string;
+  localSection: string;
+  conclusionSection: string;
+  wordCount: number;
+} {
+  const title = keyword.title;
+  const titleLower = title.toLowerCase();
+  const content = categoryContent[category];
+  
+  const introSection = `## Professional ${title} Services in Vadodara
+
+${content.introduction}
+
+When you choose Vadodara Mistry for ${titleLower} services in Vadodara, you're choosing a team that understands the unique challenges and requirements of homes and businesses in our city. From the bustling commercial areas of Sayajigunj to the residential neighborhoods of Gotri and Akota, we've been serving Vadodara for over a decade with unwavering commitment to quality.
+
+Our ${titleLower} services are designed to meet the diverse needs of Vadodara's residents, whether you're looking to upgrade your home, maintain your property, or undertake a complete renovation project. We combine traditional craftsmanship with modern techniques to deliver results that exceed expectations.`;
+
+  const detailedSection = `## Why ${title} Matters for Your Vadodara Property
+
+${keyword.description} is more than just a service – it's an investment in your property's value, functionality, and aesthetics. In Vadodara's competitive real estate market, well-maintained properties command higher rental yields and sale prices.
+
+Our expert team specializes in ${titleLower}, bringing years of hands-on experience to every project. We understand that each property in Vadodara is unique, from modern apartments in Bhayli to traditional bungalows in Raopura, and we tailor our approach accordingly.
+
+### The Vadodara Mistry Difference
+
+What sets us apart in the ${titleLower} segment is our comprehensive approach:
+
+1. **Expert Assessment**: Our specialists conduct thorough site inspections to understand your specific needs and challenges.
+
+2. **Customized Solutions**: We don't believe in one-size-fits-all. Every recommendation is tailored to your property, budget, and timeline.
+
+3. **Quality Materials**: We source premium materials from trusted suppliers, ensuring durability and performance in Vadodara's climate.
+
+4. **Skilled Workforce**: Our team of 50+ professionals includes certified experts with specialized training in ${titleLower}.
+
+5. **Transparent Pricing**: No hidden costs or surprises. Our detailed quotations cover everything from materials to labor.`;
+
+  const processSection = `## Our ${title} Process
+
+At Vadodara Mistry, we follow a systematic approach to ensure consistent, high-quality results for every ${titleLower} project:
+
+${content.serviceProcess.map((step, idx) => `### Step ${idx + 1}: ${step.title}
+${step.description}`).join('\n\n')}
+
+This structured process ensures that every ${titleLower} project in Vadodara is completed to the highest standards, on time, and within budget. Our project managers maintain regular communication throughout, keeping you informed at every stage.`;
+
+  const whyUsSection = `## Why Vadodara Chooses Us for ${title}
+
+With numerous options available for ${titleLower} in Vadodara, here's why over 10,000 customers have trusted Vadodara Mistry:
+
+${content.whyChooseUs.map(reason => `- ${reason}`).join('\n')}
+
+### Our Credentials
+
+- **12+ Years** serving Vadodara
+- **10,000+** satisfied customers
+- **50+** skilled professionals
+- **4.8/5** Google rating
+- **40+** areas covered in Vadodara
+
+We're not just service providers – we're your neighbors, committed to making Vadodara homes and businesses better, one project at a time.`;
+
+  const localSection = `## ${title} Across Vadodara
+
+We're proud to serve all major areas of Vadodara with our ${titleLower} services. Whether you're in:
+
+- **Alkapuri & Gotri** - Vadodara's premium residential areas where we handle sophisticated projects
+- **Manjalpur & Akota** - Established neighborhoods with diverse service requirements
+- **Bhayli & Waghodia Road** - Growing suburbs with new construction and renovation needs
+- **Karelibaug & Fatehgunj** - Traditional areas requiring specialized expertise
+- **Industrial Areas** - Makarpura GIDC, Nandesari GIDC for commercial and industrial projects
+
+${content.localExpertise}
+
+Our local presence means faster response times, better understanding of area-specific challenges, and ongoing support for all your ${titleLower} needs.`;
+
+  const conclusionSection = `## Get Started with ${title} in Vadodara Today
+
+Ready to experience the Vadodara Mistry difference for your ${titleLower} needs? Here's how to get started:
+
+1. **Call Us**: Dial +91 93139 82980 for immediate assistance
+2. **WhatsApp**: Send us your requirements for quick response
+3. **Book Online**: Fill our simple booking form for callback within 30 minutes
+
+Our team is available 7 days a week, and we offer free site inspection and quotation for all ${titleLower} projects in Vadodara.
+
+Don't settle for less when it comes to your property. Choose Vadodara Mistry – where quality meets affordability, and customer satisfaction is our top priority.
+
+**Contact us today and transform your space with professional ${titleLower} services!**`;
+
+  // Calculate approximate word count
+  const fullContent = [introSection, detailedSection, processSection, whyUsSection, localSection, conclusionSection].join(' ');
+  const wordCount = fullContent.split(/\s+/).length;
+
+  return {
+    introSection,
+    detailedSection,
+    processSection,
+    whyUsSection,
+    localSection,
+    conclusionSection,
+    wordCount,
   };
 }

@@ -1,6 +1,25 @@
 import { MetadataRoute } from "next";
 import { allKeywords, vadodaraAreas } from "@/lib/data";
 
+// 15 Main Services for service×area combination
+const mainServices = [
+  "pop-false-ceiling",
+  "wall-painting",
+  "texture-painting",
+  "tile-fitting",
+  "waterproofing",
+  "bathroom-renovation",
+  "plumbing",
+  "geyser-repair",
+  "modular-kitchen",
+  "wardrobe",
+  "carpenter",
+  "gate-fabrication",
+  "ss-railing",
+  "window-grill",
+  "solar-installation"
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://vadodaramistry.com";
   const lastModified = new Date();
@@ -28,17 +47,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  // All area pages (40 pages)
+  // All area pages (40 pages) - without "services-" prefix
   const areaPages = vadodaraAreas.map((area) => ({
-    url: `${baseUrl}/services-${area.slug}-vadodara`,
+    url: `${baseUrl}/${area.slug}-vadodara`,
     lastModified,
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
+  // Service × City pages (15 service-in-vadodara pages)
+  const serviceCityPages = mainServices.map((service) => ({
+    url: `${baseUrl}/${service}-in-vadodara`,
+    lastModified,
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
+
+  // Service × Area combination pages (15 services × 40 areas = 600 pages)
+  const serviceAreaPages: MetadataRoute.Sitemap = [];
+  mainServices.forEach((service) => {
+    vadodaraAreas.forEach((area) => {
+      serviceAreaPages.push({
+        url: `${baseUrl}/${service}-${area.slug}-vadodara`,
+        lastModified,
+        changeFrequency: "weekly" as const,
+        priority: 0.85,
+      });
+    });
+  });
+
   return [
     ...staticPages,
     ...keywordPages,
     ...areaPages,
+    ...serviceCityPages,
+    ...serviceAreaPages,
   ];
 }

@@ -362,7 +362,7 @@ import BookingForm from "@/components/BookingForm";
 
 export const metadata: Metadata = {
   title: "${kw.title} in Vadodara | Installation, Service & Repair | Atlas Aircon",
-  description: "${kw.description} in Vadodara. Expert AC installation, service & repair. 20+ years experience, 90-day warranty. Call +91 76003 37866",
+  description: "${kw.description} in Vadodara. Expert AC installation, service & repair. 20+ years experience, 90-day warranty. Call +91 93139 82980",
   keywords: [
     "${kw.title} Vadodara",
     "${kw.slug.replace(/-/g, ' ')}",
@@ -415,14 +415,14 @@ export default function ${funcName}() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <a
-                  href="tel:+917600337866"
+                  href="tel:+919313982980"
                   className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg"
                 >
                   <Phone size={22} />
-                  +91 76003 37866
+                  +91 93139 82980
                 </a>
                 <a
-                  href="https://wa.me/917600337866"
+                  href="https://wa.me/919313982980"
                   className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition"
                 >
                   WhatsApp Us
@@ -603,11 +603,11 @@ export default function ${funcName}() {
             Same-day service available. Call now!
           </p>
           <a
-            href="tel:+917600337866"
+            href="tel:+919313982980"
             className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition"
           >
             <Phone size={22} />
-            Call +91 76003 37866
+            Call +91 93139 82980
           </a>
         </div>
       </section>

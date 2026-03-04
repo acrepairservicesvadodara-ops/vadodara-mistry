@@ -12,12 +12,12 @@ export default function CallButton({ className, showText = false }: CallButtonPr
   if (className) {
     return (
       <a
-        href="tel:+917600337866"
+        href="tel:+919313982980"
         className={className}
         aria-label="Call us"
       >
         <Phone className="w-5 h-5 inline mr-2" />
-        Call +91 76003 37866
+        Call +91 93139 82980
       </a>
     );
   }
@@ -25,7 +25,7 @@ export default function CallButton({ className, showText = false }: CallButtonPr
   // Default floating button
   return (
     <a
-      href="tel:+917600337866"
+      href="tel:+919313982980"
       className="fixed bottom-6 right-6 z-50 bg-orange-600 text-white p-4 rounded-full shadow-lg hover:bg-orange-700 transition-all hover:scale-110 group"
       aria-label="Call us"
     >

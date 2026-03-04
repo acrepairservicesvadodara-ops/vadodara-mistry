@@ -231,14 +231,14 @@ export default function AreasPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+917600337866"
+              href="tel:+919313982980"
               className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"
             >
               <Phone size={22} />
-              +91 76003 37866
+              +91 93139 82980
             </a>
             <a
-              href="https://wa.me/917600337866"
+              href="https://wa.me/919313982980"
               className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition"
             >
               WhatsApp Us

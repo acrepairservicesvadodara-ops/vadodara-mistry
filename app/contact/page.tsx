@@ -4,8 +4,8 @@ import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import BookingForm from "@/components/BookingForm";
 
 export const metadata: Metadata = {
-  title: "Contact Vadodara Mistry | Home Services | +91 76003 37866",
-  description: "Contact Vadodara Mistry for home services in Vadodara. Call +91 76003 37866 or WhatsApp us. Same-day service available.",
+  title: "Contact Vadodara Mistry | Home Services | +91 93139 82980",
+  description: "Contact Vadodara Mistry for home services in Vadodara. Call +91 93139 82980 or WhatsApp us. Same-day service available.",
   alternates: {
     canonical: "https://vadodaramistry.com/contact",
   },
@@ -49,18 +49,18 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             <a
-              href="tel:+917600337866"
+              href="tel:+919313982980"
               className="bg-blue-50 hover:bg-blue-100 p-6 rounded-xl text-center transition group"
             >
               <div className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
                 <Phone className="w-7 h-7 text-white" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-1">Call Us</h3>
-              <p className="text-blue-600 font-medium">+91 76003 37866</p>
+              <p className="text-blue-600 font-medium">+91 93139 82980</p>
             </a>
             
             <a
-              href="https://wa.me/917600337866"
+              href="https://wa.me/919313982980"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-50 hover:bg-green-100 p-6 rounded-xl text-center transition group"
@@ -121,7 +121,7 @@ export default function ContactPage() {
                 <div className="flex items-center gap-4 mb-4">
                   <Phone className="w-6 h-6 text-blue-600" />
                   <div>
-                    <p className="text-gray-600">+91 76003 37866</p>
+                    <p className="text-gray-600">+91 93139 82980</p>
                   </div>
                 </div>
                 
@@ -172,11 +172,11 @@ export default function ContactPage() {
           <h2 className="text-2xl font-bold mb-4">Need Urgent AC Repair?</h2>
           <p className="text-blue-100 mb-6">Call now for same-day service in Vadodara!</p>
           <a
-            href="tel:+917600337866"
+            href="tel:+919313982980"
             className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition"
           >
             <Phone size={22} />
-            +91 76003 37866
+            +91 93139 82980
           </a>
         </div>
       </section>

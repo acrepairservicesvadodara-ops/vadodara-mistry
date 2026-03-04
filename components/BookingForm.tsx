@@ -1,23 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Phone, Send, CheckCircle } from "lucide-react";
 
 interface BookingFormProps {
   title?: string;
   compact?: boolean;
+  service?: string;
+  location?: string;
 }
 
-export default function BookingForm({ title = "Book Home Service", compact = false }: BookingFormProps) {
+export default function BookingForm({ title = "Book Home Service", compact = false, service: defaultService, location: defaultLocation }: BookingFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    service: "",
-    area: "",
+    service: defaultService || "",
+    area: defaultLocation || "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Update form when props change
+  useEffect(() => {
+    if (defaultService) {
+      setFormData(prev => ({ ...prev, service: defaultService }));
+    }
+    if (defaultLocation) {
+      setFormData(prev => ({ ...prev, area: defaultLocation }));
+    }
+  }, [defaultService, defaultLocation]);
 
   const services = [
     "POP False Ceiling",
@@ -43,7 +55,7 @@ export default function BookingForm({ title = "Book Home Service", compact = fal
     const message = `New Service Booking - Vadodara Mistry:\n\nName: ${formData.name}\nPhone: ${formData.phone}\nService: ${formData.service}\nArea: ${formData.area}\nDetails: ${formData.message || "N/A"}`;
     
     // Open WhatsApp with pre-filled message
-    const whatsappUrl = `https://wa.me/917600337866?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/919313982980?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
 
     setIsSubmitting(false);
@@ -66,11 +78,11 @@ export default function BookingForm({ title = "Book Home Service", compact = fal
           <h3 className="text-xl font-bold text-gray-900 mb-2">Booking Sent!</h3>
           <p className="text-gray-600">We&apos;ll contact you within 30 minutes.</p>
           <a 
-            href="tel:+917600337866" 
+            href="tel:+919313982980" 
             className="inline-flex items-center gap-2 mt-4 text-orange-600 hover:text-orange-700 font-medium"
           >
             <Phone className="w-4 h-4" />
-            Call Now: +91 76003 37866
+            Call Now: +91 93139 82980
           </a>
         </div>
       </div>
@@ -182,11 +194,11 @@ export default function BookingForm({ title = "Book Home Service", compact = fal
       <div className="mt-4 pt-4 border-t border-gray-200 text-center">
         <p className="text-sm text-gray-600 mb-2">Or call us directly:</p>
         <a 
-          href="tel:+917600337866"
+          href="tel:+919313982980"
           className="inline-flex items-center gap-2 text-lg font-bold text-orange-600 hover:text-orange-700"
         >
           <Phone className="w-5 h-5" />
-          +91 76003 37866
+          +91 93139 82980
         </a>
       </div>
     </div>
