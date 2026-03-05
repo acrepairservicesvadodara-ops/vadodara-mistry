@@ -1,122 +1,14 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-
-// Painting & POP Services
-const paintingServices = [
-  { name: "POP False Ceiling", href: "/pop-false-ceiling-vadodara" },
-  { name: "Gypsum Ceiling", href: "/gypsum-false-ceiling-vadodara" },
-  { name: "PVC Ceiling Panels", href: "/pvc-ceiling-vadodara" },
-  { name: "Texture Painting", href: "/texture-painting-vadodara" },
-  { name: "Interior Painting", href: "/interior-painting-vadodara" },
-  { name: "Exterior Painting", href: "/exterior-painting-vadodara" },
-  { name: "Wall Painting", href: "/wall-painting-vadodara" },
-  { name: "Waterproofing", href: "/waterproofing-vadodara" },
-  { name: "Asian Paints Royale", href: "/asian-paints-royale-vadodara" },
-  { name: "3D Wall Painting", href: "/3d-wall-painting-vadodara" },
-];
-
-// Civil & Masonry Services
-const civilServices = [
-  { name: "Civil Contractors", href: "/civil-contractors-vadodara" },
-  { name: "Home Renovation", href: "/home-renovation-vadodara" },
-  { name: "Kitchen Renovation", href: "/kitchen-renovation-vadodara" },
-  { name: "Bathroom Renovation", href: "/bathroom-renovation-vadodara" },
-  { name: "Masonry Contractors", href: "/masonry-vadodara" },
-  { name: "Tiles Fitting", href: "/tile-fitting-vadodara" },
-  { name: "Plastering Work", href: "/plastering-vadodara" },
-  { name: "Kadiya Kam", href: "/kadiya-kam-vadodara" },
-  { name: "RCC Construction", href: "/rcc-construction-vadodara" },
-  { name: "Compound Wall", href: "/compound-wall-vadodara" },
-];
-
-// Plumbing Services
-const plumbingServices = [
-  { name: "Plumbers", href: "/plumbers-vadodara" },
-  { name: "Emergency Plumber 24Hr", href: "/emergency-plumber-vadodara" },
-  { name: "Water Leakage Repair", href: "/water-leak-repair-vadodara" },
-  { name: "Bathroom Fitting", href: "/bathroom-fitting-vadodara" },
-  { name: "Water Tank Cleaning", href: "/water-tank-cleaning-vadodara" },
-  { name: "Geyser Installation", href: "/geyser-installation-vadodara" },
-  { name: "RO Service", href: "/ro-service-vadodara" },
-  { name: "Drainage Cleaning", href: "/drainage-cleaning-vadodara" },
-  { name: "Drainage Cleaning", href: "/drainage-cleaning-vadodara" },
-  { name: "Toilet Repair", href: "/toilet-repair-vadodara" },
-];
-
-// Carpenter & Furniture Services
-const carpenterServices = [
-  { name: "Best Carpenter", href: "/carpenter-vadodara" },
-  { name: "Modular Kitchen", href: "/modular-kitchen-vadodara" },
-  { name: "Wardrobe Design", href: "/wardrobe-design-vadodara" },
-  { name: "Sofa Manufacturers", href: "/sofa-set-vadodara" },
-  { name: "Furniture Repair", href: "/furniture-repair-vadodara" },
-  { name: "Office Furniture", href: "/office-furniture-vadodara" },
-  { name: "Teak Wood Furniture", href: "/custom-furniture-vadodara" },
-  { name: "Suthar Kam", href: "/suthar-kam-vadodara" },
-  { name: "TV Unit Design", href: "/tv-unit-vadodara" },
-  { name: "Double Bed", href: "/double-bed-vadodara" },
-];
-
-// Fabrication & Welding Services
-const fabricationServices = [
-  { name: "Fabrication Work", href: "/fabrication-vadodara" },
-  { name: "SS Railing", href: "/ss-railing-vadodara" },
-  { name: "Main Gate", href: "/main-gate-vadodara" },
-  { name: "Window Grill", href: "/window-grill-vadodara" },
-  { name: "Safety Door Grill", href: "/safety-door-vadodara" },
-  { name: "Industrial Shed", href: "/industrial-shed-vadodara" },
-  { name: "Welding Services", href: "/welding-vadodara" },
-  { name: "Rolling Shutter", href: "/rolling-shutter-vadodara" },
-  { name: "Spiral Staircase", href: "/spiral-staircase-vadodara" },
-  { name: "Structural Fabrication", href: "/structural-fabrication-vadodara" },
-];
-
-// Solar Services
-const solarServices = [
-  { name: "Solar Maintenance", href: "/solar-maintenance-vadodara" },
-  { name: "Solar Panel Cleaning", href: "/solar-panel-cleaning-vadodara" },
-  { name: "Solar Inverter Repair", href: "/solar-inverter-repair-vadodara" },
-  { name: "Solar AMC", href: "/solar-amc-vadodara" },
-  { name: "Industrial Solar", href: "/industrial-solar-vadodara" },
-  { name: "Rooftop Solar", href: "/rooftop-solar-vadodara" },
-  { name: "Solar AMC", href: "/solar-amc-vadodara" },
-  { name: "Solar Maintenance", href: "/solar-maintenance-vadodara" },
-];
-
-// Vadodara Areas
-const vadodaraAreas = [
-  { name: "Alkapuri", href: "/services-alkapuri-vadodara" },
-  { name: "Gotri", href: "/services-gotri-vadodara" },
-  { name: "Manjalpur", href: "/services-manjalpur-vadodara" },
-  { name: "Akota", href: "/services-akota-vadodara" },
-  { name: "Fatehgunj", href: "/services-fatehgunj-vadodara" },
-  { name: "Karelibaug", href: "/services-karelibaug-vadodara" },
-  { name: "Waghodia Road", href: "/services-waghodia-road-vadodara" },
-  { name: "Makarpura GIDC", href: "/services-makarpura-gidc-vadodara" },
-  { name: "Bhayli", href: "/services-bhayli-vadodara" },
-  { name: "Chhani", href: "/services-chhani-vadodara" },
-  { name: "Nandesari GIDC", href: "/services-nandesari-gidc-vadodara" },
-  { name: "Por Ramangamdi", href: "/services-por-ramangamdi-vadodara" },
-];
-
-// More Areas
-const moreAreas = [
-  { name: "Ajwa Road", href: "/services-ajwa-road-vadodara" },
-  { name: "Gotri Road", href: "/services-gotri-road-vadodara" },
-  { name: "Subhanpura", href: "/services-subhanpura-vadodara" },
-  { name: "Nizampura", href: "/services-nizampura-vadodara" },
-  { name: "Harni", href: "/services-harni-vadodara" },
-  { name: "Tarsali", href: "/services-tarsali-vadodara" },
-  { name: "Gorwa", href: "/services-gorwa-vadodara" },
-  { name: "Tandalja", href: "/services-tandalja-vadodara" },
-  { name: "Vasna", href: "/services-vasna-vadodara" },
-  { name: "Sama", href: "/services-sama-vadodara" },
-  { name: "Savli Manjusar GIDC", href: "/services-savli-manjusar-vadodara" },
-  { name: "Ranoli GIDC", href: "/services-ranoli-gidc-vadodara" },
-  { name: "Karjan", href: "/services-karjan-vadodara" },
-  { name: "Padra", href: "/services-padra-vadodara" },
-  { name: "Jambusar", href: "/services-jambusar-vadodara" },
-];
+import {
+  paintingKeywords,
+  civilKeywords,
+  plumbingKeywords,
+  carpenterKeywords,
+  fabricationKeywords,
+  solarKeywords,
+  vadodaraAreas,
+} from "@/lib/data";
 
 // Quick Links
 const quickLinks = [
@@ -131,7 +23,8 @@ export default function Footer() {
     <footer className="bg-gray-900 text-white">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+        {/* Top Section - Company Info & Quick Links */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-10">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
@@ -178,143 +71,143 @@ export default function Footer() {
                 Mon-Sat: 8AM-8PM | Sun: 9AM-6PM
               </div>
             </div>
-
-            {/* Quick Links */}
-            <div className="mt-6">
-              <h4 className="text-lg font-semibold mb-3 text-white">Quick Links</h4>
-              <ul className="flex flex-wrap gap-x-4 gap-y-2">
-                {quickLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="text-gray-400 hover:text-orange-400 transition">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
-          {/* Painting & POP */}
+          {/* Quick Links & Areas Summary */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Painting & POP</h4>
-            <ul className="space-y-2">
-              {paintingServices.map((service) => (
-                <li key={service.href}>
-                  <Link href={service.href} className="text-gray-400 hover:text-orange-400 transition text-sm">
-                    {service.name}
+            <h4 className="text-lg font-semibold mb-3 text-white">Quick Links</h4>
+            <ul className="space-y-2 mb-6">
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-gray-400 hover:text-orange-400 transition text-sm">
+                    {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Civil Work */}
+          {/* Service Categories Summary */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Civil Work</h4>
+            <h4 className="text-lg font-semibold mb-3 text-white">Our Services</h4>
             <ul className="space-y-2">
-              {civilServices.map((service) => (
-                <li key={service.href}>
-                  <Link href={service.href} className="text-gray-400 hover:text-orange-400 transition text-sm">
-                    {service.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Plumbing */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Plumbing</h4>
-            <ul className="space-y-2">
-              {plumbingServices.map((service) => (
-                <li key={service.href}>
-                  <Link href={service.href} className="text-gray-400 hover:text-orange-400 transition text-sm">
-                    {service.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Vadodara Areas */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Service Areas</h4>
-            <ul className="space-y-2">
-              {vadodaraAreas.slice(0, 10).map((area) => (
-                <li key={area.href}>
-                  <Link href={area.href} className="text-gray-400 hover:text-orange-400 transition text-sm">
-                    {area.name}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/areas" className="text-orange-400 hover:text-orange-300 font-medium text-sm">
-                  View All Areas →
-                </Link>
-              </li>
+              <li><Link href="/pop-false-ceiling-vadodara" className="text-gray-400 hover:text-orange-400 text-sm">POP & Painting</Link></li>
+              <li><Link href="/civil-contractors-vadodara" className="text-gray-400 hover:text-orange-400 text-sm">Civil Work</Link></li>
+              <li><Link href="/plumbers-vadodara" className="text-gray-400 hover:text-orange-400 text-sm">Plumbing Services</Link></li>
+              <li><Link href="/carpenter-vadodara" className="text-gray-400 hover:text-orange-400 text-sm">Carpenter & Furniture</Link></li>
+              <li><Link href="/fabrication-vadodara" className="text-gray-400 hover:text-orange-400 text-sm">Fabrication & Welding</Link></li>
+              <li><Link href="/solar-installation-vadodara" className="text-gray-400 hover:text-orange-400 text-sm">Solar Services</Link></li>
             </ul>
           </div>
         </div>
 
-        {/* Carpenter & Furniture Row */}
-        <div className="mt-10 pt-8 border-t border-gray-800">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">Carpenter & Furniture</h4>
-              <div className="grid grid-cols-2 gap-2">
-                {carpenterServices.map((service) => (
-                  <Link 
-                    key={service.href} 
-                    href={service.href} 
-                    className="text-gray-400 hover:text-orange-400 transition text-sm"
-                  >
-                    {service.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">Fabrication & Welding</h4>
-              <div className="grid grid-cols-2 gap-2">
-                {fabricationServices.map((service) => (
-                  <Link 
-                    key={service.href} 
-                    href={service.href} 
-                    className="text-gray-400 hover:text-orange-400 transition text-sm"
-                  >
-                    {service.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">Solar Services</h4>
-              <div className="grid grid-cols-2 gap-2">
-                {solarServices.map((service) => (
-                  <Link 
-                    key={service.href} 
-                    href={service.href} 
-                    className="text-gray-400 hover:text-orange-400 transition text-sm"
-                  >
-                    {service.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* More Areas Row */}
-        <div className="mt-6 pt-6 border-t border-gray-800">
-          <h4 className="text-lg font-semibold mb-4 text-white">More Service Areas</h4>
-          <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-8 gap-3">
-            {moreAreas.map((area) => (
+        {/* All Service Areas */}
+        <div className="border-t border-gray-800 pt-8 mb-8">
+          <h4 className="text-lg font-semibold mb-4 text-white">Service Areas in Vadodara</h4>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-2">
+            {vadodaraAreas.map((area) => (
               <Link 
-                key={area.href} 
-                href={area.href} 
-                className="text-gray-400 hover:text-orange-400 transition text-sm"
+                key={area.slug} 
+                href={`/${area.slug}-vadodara`} 
+                className="text-gray-400 hover:text-orange-400 transition text-xs"
               >
                 {area.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* POP & Painting Services */}
+        <div className="border-t border-gray-800 pt-6 mb-6">
+          <h4 className="text-base font-semibold mb-3 text-orange-400">POP & Painting Services</h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-x-3 gap-y-1">
+            {paintingKeywords.map((service) => (
+              <Link 
+                key={service.slug} 
+                href={`/${service.slug}`} 
+                className="text-gray-400 hover:text-orange-400 transition text-xs truncate"
+              >
+                {service.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Civil Work Services */}
+        <div className="border-t border-gray-800 pt-6 mb-6">
+          <h4 className="text-base font-semibold mb-3 text-amber-400">Civil Work & Tile Services</h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-x-3 gap-y-1">
+            {civilKeywords.map((service) => (
+              <Link 
+                key={service.slug} 
+                href={`/${service.slug}`} 
+                className="text-gray-400 hover:text-orange-400 transition text-xs truncate"
+              >
+                {service.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Plumbing Services */}
+        <div className="border-t border-gray-800 pt-6 mb-6">
+          <h4 className="text-base font-semibold mb-3 text-blue-400">Plumbing Services</h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-x-3 gap-y-1">
+            {plumbingKeywords.map((service) => (
+              <Link 
+                key={service.slug} 
+                href={`/${service.slug}`} 
+                className="text-gray-400 hover:text-orange-400 transition text-xs truncate"
+              >
+                {service.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Carpenter Services */}
+        <div className="border-t border-gray-800 pt-6 mb-6">
+          <h4 className="text-base font-semibold mb-3 text-green-400">Carpenter & Furniture Services</h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-x-3 gap-y-1">
+            {carpenterKeywords.map((service) => (
+              <Link 
+                key={service.slug} 
+                href={`/${service.slug}`} 
+                className="text-gray-400 hover:text-orange-400 transition text-xs truncate"
+              >
+                {service.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Fabrication Services */}
+        <div className="border-t border-gray-800 pt-6 mb-6">
+          <h4 className="text-base font-semibold mb-3 text-gray-300">Fabrication & Welding Services</h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-x-3 gap-y-1">
+            {fabricationKeywords.map((service) => (
+              <Link 
+                key={service.slug} 
+                href={`/${service.slug}`} 
+                className="text-gray-400 hover:text-orange-400 transition text-xs truncate"
+              >
+                {service.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Solar Services */}
+        <div className="border-t border-gray-800 pt-6 mb-6">
+          <h4 className="text-base font-semibold mb-3 text-yellow-400">Solar Services</h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-x-3 gap-y-1">
+            {solarKeywords.map((service) => (
+              <Link 
+                key={service.slug} 
+                href={`/${service.slug}`} 
+                className="text-gray-400 hover:text-orange-400 transition text-xs truncate"
+              >
+                {service.title}
               </Link>
             ))}
           </div>
