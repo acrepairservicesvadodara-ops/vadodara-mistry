@@ -1,86 +1,85 @@
 import { MetadataRoute } from "next";
-import { allKeywords, vadodaraAreas } from "@/lib/data";
+import fs from "fs";
+import path from "path";
+import { SEO_CONFIG } from "@/lib/seo-config";
 
-// 15 Main Services for service×area combination
-const mainServices = [
-  "pop-false-ceiling",
-  "wall-painting",
-  "texture-painting",
-  "tile-fitting",
-  "waterproofing",
-  "bathroom-renovation",
-  "plumbing",
-  "geyser-repair",
-  "modular-kitchen",
-  "wardrobe",
-  "carpenter",
-  "gate-fabrication",
-  "ss-railing",
-  "window-grill",
-  "solar-installation"
-];
+function getAllRoutes(): string[] {
+  const appDir = path.join(process.cwd(), "app");
+  if (!fs.existsSync(appDir)) return ["/"];
+
+  const routes: string[] = ["/"];
+  const ignoreDirs = new Set([
+    "api",
+    "_components",
+    "_lib",
+    "admin",
+    "node_modules",
+  ]);
+
+  function scanDir(dir: string, basePath: string) {
+    let entries: fs.Dirent[];
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+
+    for (const entry of entries) {
+      if (entry.name.startsWith(".") || entry.name.startsWith("_")) continue;
+
+      if (entry.isDirectory()) {
+        if (ignoreDirs.has(entry.name)) continue;
+
+        const dirPath = path.join(dir, entry.name);
+        const routePath = `${basePath}/${entry.name}`;
+
+        const hasPage =
+          fs.existsSync(path.join(dirPath, "page.tsx")) ||
+          fs.existsSync(path.join(dirPath, "page.js")) ||
+          fs.existsSync(path.join(dirPath, "page.jsx")) ||
+          fs.existsSync(path.join(dirPath, "page.mdx"));
+
+        if (hasPage && !entry.name.startsWith("[")) {
+          routes.push(routePath);
+        }
+
+        scanDir(dirPath, routePath);
+      }
+    }
+  }
+
+  scanDir(appDir, "");
+  return [...new Set(routes)].sort();
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://vadodaramistry.com";
+  const baseUrl = SEO_CONFIG.siteUrl;
+  const allRoutes = getAllRoutes();
   const lastModified = new Date();
 
-  // Static pages
-  const staticPages = [
-    { url: baseUrl, lastModified, changeFrequency: "daily" as const, priority: 1.0 },
-    { url: `${baseUrl}/about`, lastModified, changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${baseUrl}/contact`, lastModified, changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${baseUrl}/areas`, lastModified, changeFrequency: "monthly" as const, priority: 0.7 },
-    // Main category pages
-    { url: `${baseUrl}/pop-painting-vadodara`, lastModified, changeFrequency: "weekly" as const, priority: 0.9 },
-    { url: `${baseUrl}/civil-contractors-vadodara`, lastModified, changeFrequency: "weekly" as const, priority: 0.9 },
-    { url: `${baseUrl}/plumbing-vadodara`, lastModified, changeFrequency: "weekly" as const, priority: 0.9 },
-    { url: `${baseUrl}/carpenter-vadodara`, lastModified, changeFrequency: "weekly" as const, priority: 0.9 },
-    { url: `${baseUrl}/fabrication-vadodara`, lastModified, changeFrequency: "weekly" as const, priority: 0.9 },
-    { url: `${baseUrl}/solar-vadodara`, lastModified, changeFrequency: "weekly" as const, priority: 0.9 },
-  ];
+  const highPriorityPaths = new Set(["/"]);
+  const mediumPriorityKeywords = ["about", "contact", "services", "service", "areas"];
 
-  // All keyword pages (370+ pages)
-  const keywordPages = allKeywords.map((keyword) => ({
-    url: `${baseUrl}/${keyword.slug}`,
-    lastModified,
-    changeFrequency: "weekly" as const,
-    priority: 0.9,
-  }));
+  return allRoutes.map((route) => {
+    let priority = 0.7;
+    let changeFrequency: "daily" | "weekly" | "monthly" = "weekly";
 
-  // All area pages (40 pages) - without "services-" prefix
-  const areaPages = vadodaraAreas.map((area) => ({
-    url: `${baseUrl}/${area.slug}-vadodara`,
-    lastModified,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
+    if (highPriorityPaths.has(route)) {
+      priority = 1.0;
+      changeFrequency = "daily";
+    } else if (mediumPriorityKeywords.some((kw) => route.toLowerCase().includes(kw))) {
+      priority = 0.9;
+      changeFrequency = "weekly";
+    } else if (route.split("/").length <= 2) {
+      priority = 0.8;
+      changeFrequency = "weekly";
+    }
 
-  // Service × City pages (15 service-in-vadodara pages)
-  const serviceCityPages = mainServices.map((service) => ({
-    url: `${baseUrl}/${service}-in-vadodara`,
-    lastModified,
-    changeFrequency: "weekly" as const,
-    priority: 0.9,
-  }));
-
-  // Service × Area combination pages (15 services × 40 areas = 600 pages)
-  const serviceAreaPages: MetadataRoute.Sitemap = [];
-  mainServices.forEach((service) => {
-    vadodaraAreas.forEach((area) => {
-      serviceAreaPages.push({
-        url: `${baseUrl}/${service}-${area.slug}-vadodara`,
-        lastModified,
-        changeFrequency: "weekly" as const,
-        priority: 0.85,
-      });
-    });
+    return {
+      url: `${baseUrl}${route}`,
+      lastModified,
+      changeFrequency,
+      priority,
+    };
   });
-
-  return [
-    ...staticPages,
-    ...keywordPages,
-    ...areaPages,
-    ...serviceCityPages,
-    ...serviceAreaPages,
-  ];
 }

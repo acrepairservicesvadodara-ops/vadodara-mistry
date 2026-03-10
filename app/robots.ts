@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { SEO_CONFIG } from "@/lib/seo-config";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,22 +7,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/api/",
-          "/_next/",
-          "/private/",
-        ],
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-      },
-      {
-        userAgent: "Bingbot",
-        allow: "/",
+        disallow: ["/api/", "/admin/", "/_next/", "/private/"],
       },
     ],
-    sitemap: "https://vadodaramistry.com/sitemap.xml",
-    host: "https://vadodaramistry.com",
+    sitemap: `${SEO_CONFIG.siteUrl}/sitemap.xml`,
   };
 }
