@@ -1,0 +1,138 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import WhatsAppFloat from "../components/WhatsAppFloat";
+import CallButton from "../components/CallButton";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  keywords?: string[];
+  ogImage?: string;
+  jsonLd?: object[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  keywords = [],
+  ogImage = "/og-image.jpg",
+  jsonLd = [],
+} = Astro.props;
+
+const siteUrl = "https://vadodaramistry.com";
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": siteUrl,
+  name: "Vadodara Mistry",
+  image: `${siteUrl}/logo.png`,
+  description:
+    "Professional home services company in Vadodara offering POP ceiling, painting, civil work, plumbing, carpentry, fabrication & solar maintenance services.",
+  url: siteUrl,
+  telephone: "+919313982980",
+  email: "info@vadodaramistry.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Sayajigunj",
+    addressLocality: "Vadodara",
+    addressRegion: "Gujarat",
+    postalCode: "390005",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 22.3072,
+    longitude: 73.1812,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "08:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Sunday",
+      opens: "09:00",
+      closes: "18:00",
+    },
+  ],
+  priceRange: "₹₹",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "1500",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  areaServed: [
+    { "@type": "City", name: "Vadodara" },
+    { "@type": "Place", name: "Alkapuri" },
+    { "@type": "Place", name: "Manjalpur" },
+    { "@type": "Place", name: "Gotri" },
+    { "@type": "Place", name: "Waghodia Road" },
+    { "@type": "Place", name: "Makarpura GIDC" },
+  ],
+  sameAs: [
+    "https://www.facebook.com/vadodaramistry",
+    "https://www.instagram.com/vadodaramistry",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Vadodara Mistry" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    {jsonLd.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+  </head>
+  <body class="font-sans antialiased">
+    <Header client:load />
+    <main class="min-h-screen">
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppFloat />
+    <CallButton />
+  </body>
+</html>

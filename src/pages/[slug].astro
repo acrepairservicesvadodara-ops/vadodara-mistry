@@ -1,0 +1,320 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BookingForm from "../components/BookingForm";
+import Testimonials from "../components/Testimonials";
+import ImageSlider from "../components/ImageSlider";
+import {
+  Phone,
+  MapPin,
+  Clock,
+  CheckCircle,
+  Shield,
+  Award,
+  Users,
+  ArrowRight,
+} from "lucide-react";
+import {
+  mainServices,
+  areas,
+  categoryConfig,
+  categoryImages,
+  serviceAreaSlug,
+  generateFAQs,
+  generateExtendedContent,
+} from "../lib/service-area-data";
+import {
+  generateFAQSchema,
+  generateLocalBusinessSchema,
+  generateServiceSchema,
+  generateBreadcrumbSchema,
+} from "../lib/business-config";
+
+export async function getStaticPaths() {
+  const paths: any[] = [];
+
+  // Family B: service x area combination pages (615 total)
+  for (const service of mainServices) {
+    // city page: service-in-vadodara
+    paths.push({
+      params: { slug: serviceAreaSlug(service, null, true) },
+      props: { kind: "service-area", service, areaName: null, isCity: true },
+    });
+    // area pages: service-area-vadodara
+    for (const area of areas) {
+      paths.push({
+        params: { slug: serviceAreaSlug(service, area.name, false) },
+        props: { kind: "service-area", service, areaName: area.name, isCity: false },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { kind, service, areaName, isCity } = Astro.props as {
+  kind: "service-area";
+  service: (typeof mainServices)[number];
+  areaName: string | null;
+  isCity: boolean;
+};
+
+const location = isCity ? "Vadodara" : `${areaName}, Vadodara`;
+const locationShort = isCity ? "Vadodara" : (areaName as string);
+const slug = serviceAreaSlug(service, areaName, isCity);
+const config = categoryConfig[service.category];
+const faqs = generateFAQs(service, areaName, isCity);
+const content = generateExtendedContent(service, areaName, isCity);
+const title = isCity ? `${service.name} in Vadodara` : `${service.name} in ${areaName}, Vadodara`;
+const metaTitle = `${service.name} in ${locationShort} | Best ${service.name} Services - Vadodara Mistry`;
+const metaDesc = `Expert ${service.name} in ${location}. Professional services, premium materials, 10+ years experience. Free quote: +91 93139 82980. Trusted by 5000+ customers.`;
+
+const faqSchema = generateFAQSchema(faqs);
+const localBusinessSchema = generateLocalBusinessSchema();
+const serviceSchema = generateServiceSchema({ title: service.name, description: metaDesc, slug });
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "https://vadodaramistry.com" },
+  { name: service.name, url: `https://vadodaramistry.com/${service.slug}-in-vadodara` },
+  ...(!isCity ? [{ name: areaName as string, url: `https://vadodaramistry.com/${slug}` }] : []),
+]);
+
+const otherAreas = areas.filter((a) => a.name !== areaName).slice(0, 15);
+---
+
+<Layout
+  title={metaTitle}
+  description={metaDesc}
+  canonical={`https://vadodaramistry.com/${slug}`}
+  keywords={[...service.keywords, locationShort, "Vadodara"]}
+  jsonLd={[faqSchema, localBusinessSchema, serviceSchema, breadcrumbSchema]}
+>
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class={`relative bg-gradient-to-br ${config.gradient} text-white py-16 md:py-24 overflow-hidden`}>
+      <div class="absolute inset-0">
+        <img
+          src={`/images/services/${service.category}-1.jpg`}
+          alt={`${service.name} in ${locationShort}`}
+          class="absolute inset-0 w-full h-full object-cover opacity-30"
+        />
+      </div>
+      <div class={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-60`}></div>
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm mb-4 text-white/80">
+              <a href="/" class="hover:text-white">Home</a>
+              <span class="mx-2">/</span>
+              <a href={`/${service.slug}-in-vadodara`} class="hover:text-white">{service.name}</a>
+              {!isCity && (
+                <>
+                  <span class="mx-2">/</span>
+                  <span>{areaName}</span>
+                </>
+              )}
+            </nav>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">{title}</h1>
+            <p class="text-xl mb-8 text-white/90">{content.intro}</p>
+            <div class="flex flex-wrap gap-4 mb-8">
+              <div class="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
+                <Shield className="w-5 h-5" />
+                <span>10+ Years Experience</span>
+              </div>
+              <div class="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
+                <Award className="w-5 h-5" />
+                <span>5000+ Projects</span>
+              </div>
+              <div class="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
+                <Users className="w-5 h-5" />
+                <span>Trusted Experts</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-4">
+              <a href="tel:+919313982980" class="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                <Phone className="w-5 h-5" />
+                Call: +91 93139 82980
+              </a>
+              <a href="https://wa.me/919313982980" class="inline-flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition">
+                WhatsApp Now
+              </a>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-2xl">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Get Free Quote for {service.name}</h2>
+            <BookingForm client:load service={service.name} location={locationShort} />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Gallery Section -->
+    <section class="py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-8">Our {service.name} Work Gallery</h2>
+        <div class="max-w-4xl mx-auto">
+          <ImageSlider client:visible images={categoryImages[service.category]} autoPlay={true} interval={4000} />
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Professional {service.name} in {location}</h2>
+          <div class="prose prose-lg max-w-none text-gray-700">
+            {content.detailed.split("\n\n").map((p) => (
+              <p class="mb-4">{p}</p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Why Choose Vadodara Mistry for {service.name}?</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { title: "10+ Years Experience", desc: `Decade of expertise in ${service.name.toLowerCase()} services`, Icon: Award },
+            { title: "Trained Professionals", desc: "Skilled workers with proper training", Icon: Users },
+            { title: "Premium Materials", desc: "Top quality ISI certified materials", Icon: Shield },
+            { title: "On-Time Delivery", desc: "Projects completed within deadline", Icon: Clock },
+          ].map((item) => (
+            <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+              <item.Icon className={`w-12 h-12 ${config.iconText} mb-4`} />
+              <h3 class="text-xl font-semibold mb-2">{item.title}</h3>
+              <p class="text-gray-600">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Services List -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Our {service.name} Services in {locationShort}</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {service.keywords.map((keyword) => (
+            <div class="flex items-center gap-3 p-4 bg-white rounded-lg">
+              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+              <span class="text-gray-700 capitalize">{keyword}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Our {service.name} Process</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {[
+            { step: 1, title: "Enquiry", desc: "Contact us via call, WhatsApp or form" },
+            { step: 2, title: "Site Visit", desc: "Free inspection and measurement" },
+            { step: 3, title: "Quotation", desc: "Detailed quote within 24 hours" },
+            { step: 4, title: "Execution", desc: "Quality work with on-time delivery" },
+          ].map((item) => (
+            <div class="text-center">
+              <div class={`w-16 h-16 ${config.stepBg} text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4`}>
+                {item.step}
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{item.title}</h3>
+              <p class="text-gray-600">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">What Our Customers Say</h2>
+        <Testimonials filterService={service.category} limit={6} />
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">FAQs - {service.name} in {locationShort}</h2>
+        <div class="max-w-3xl mx-auto space-y-4">
+          {faqs.map((faq) => (
+            <details class="bg-gray-50 rounded-xl shadow-sm group">
+              <summary class="p-6 cursor-pointer font-semibold text-gray-900 flex justify-between items-center">
+                {faq.question}
+                <ArrowRight className="w-5 h-5 text-gray-400 group-open:rotate-90 transition-transform" />
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Local Content -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">{service.name} Services Across {locationShort}</h2>
+          <div class="prose prose-lg max-w-none text-gray-700">
+            <p class="mb-4 whitespace-pre-line">{content.localContent}</p>
+            <p class="mb-4 whitespace-pre-line">{content.conclusion}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="py-16 bg-gray-900 text-white">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-bold mb-6">Contact Us for {service.name}</h2>
+            <div class="space-y-4">
+              <a href="tel:+919313982980" class={`flex items-center gap-3 text-lg ${config.contactHoverText}`}>
+                <Phone className="w-6 h-6" />
+                +91 93139 82980
+              </a>
+              <div class="flex items-start gap-3 text-lg">
+                <MapPin className="w-6 h-6 flex-shrink-0 mt-1" />
+                <span>Shop No. 12, Shreeji Complex, Near Sayajigunj Circle, Sayajigunj, Vadodara, Gujarat 390005</span>
+              </div>
+              <div class="flex items-center gap-3 text-lg">
+                <Clock className="w-6 h-6" />
+                Mon-Sat: 8AM-8PM | Sun: 9AM-6PM
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Quick Enquiry</h3>
+            <BookingForm client:load service={service.name} location={locationShort} />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Areas -->
+    {!isCity && (
+      <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">{service.name} in Other Areas</h2>
+          <div class="flex flex-wrap justify-center gap-3">
+            {otherAreas.map((area) => (
+              <a
+                href={`/${service.slug}-${area.slug}-vadodara`}
+                class={`px-4 py-2 bg-white border rounded-full ${config.areaHoverBg} ${config.areaHoverBorder} transition`}
+              >
+                {area.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+</Layout>

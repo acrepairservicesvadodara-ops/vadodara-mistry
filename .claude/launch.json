@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "vadodara-mistry-astro-dev",
+      "runtimeExecutable": "/Users/rahulmedhe/.nvm/versions/node/v22.23.1/bin/node",
+      "runtimeArgs": ["/Applications/NEW CLIENTS/vadodara-mistry-astro/node_modules/.bin/astro", "dev"],
+      "port": 4321,
+      "autoPort": true
+    }
+  ]
+}
