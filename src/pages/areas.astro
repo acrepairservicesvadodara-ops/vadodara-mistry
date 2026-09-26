@@ -1,0 +1,210 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BookingForm from "../components/BookingForm";
+import { MapPin, Phone, ArrowRight } from "lucide-react";
+
+const vadodaraAreas = [
+  { name: "Alkapuri", slug: "alkapuri", popular: true },
+  { name: "Gotri", slug: "gotri", popular: true },
+  { name: "Manjalpur", slug: "manjalpur", popular: true },
+  { name: "Akota", slug: "akota", popular: true },
+  { name: "Fatehgunj", slug: "fatehgunj", popular: true },
+  { name: "Karelibaug", slug: "karelibaug", popular: true },
+  { name: "Sayajigunj", slug: "sayajigunj", popular: true },
+  { name: "Waghodia", slug: "waghodia", popular: true },
+  { name: "Harni", slug: "harni" },
+  { name: "Vasna", slug: "vasna" },
+  { name: "Sama", slug: "sama" },
+  { name: "Tandalja", slug: "tandalja" },
+  { name: "Subhanpura", slug: "subhanpura" },
+  { name: "Gorwa", slug: "gorwa" },
+  { name: "Nizampura", slug: "nizampura" },
+  { name: "Atladara", slug: "atladara" },
+  { name: "Chhani", slug: "chhani" },
+  { name: "Tarsali", slug: "tarsali" },
+  { name: "Makarpura", slug: "makarpura" },
+  { name: "Ajwa Road", slug: "ajwa-road" },
+  { name: "Vadsar", slug: "vadsar" },
+  { name: "Sevasi", slug: "sevasi" },
+  { name: "Sama Savli Road", slug: "sama-savli-road" },
+  { name: "New VIP Road", slug: "new-vip-road" },
+  { name: "Old Padra Road", slug: "old-padra-road" },
+  { name: "New Sama Road", slug: "new-sama-road" },
+  { name: "TP Road", slug: "tp-road" },
+  { name: "Race Course", slug: "race-course" },
+  { name: "Ellora Park", slug: "ellora-park" },
+  { name: "Pratap Nagar", slug: "pratap-nagar" },
+  { name: "Vasundhara", slug: "vasundhara" },
+  { name: "GIDC Makarpura", slug: "gidc-makarpura" },
+  { name: "Nandesari", slug: "nandesari" },
+  { name: "Savli", slug: "savli" },
+  { name: "Halol Road", slug: "halol-road" },
+  { name: "Dabhoi Road", slug: "dabhoi-road" },
+  { name: "Karjan", slug: "karjan" },
+  { name: "Padra", slug: "padra" },
+  { name: "Shinor", slug: "shinor" },
+  { name: "Panchmahal Road", slug: "panchmahal-road" },
+];
+
+const nearbyCities = [
+  { name: "Ahmedabad", slug: "ahmedabad", distance: "110 km" },
+  { name: "Surat", slug: "surat", distance: "160 km" },
+  { name: "Bharuch", slug: "bharuch", distance: "72 km" },
+  { name: "Anand", slug: "anand", distance: "40 km" },
+  { name: "Gandhinagar", slug: "gandhinagar", distance: "130 km" },
+  { name: "Godhra", slug: "godhra", distance: "60 km" },
+  { name: "Halol", slug: "halol", distance: "40 km" },
+  { name: "Ankleshwar", slug: "ankleshwar", distance: "90 km" },
+  { name: "Nadiad", slug: "nadiad", distance: "55 km" },
+  { name: "Dahod", slug: "dahod", distance: "110 km" },
+  { name: "Rajkot", slug: "rajkot", distance: "220 km" },
+  { name: "Dahej", slug: "dahej", distance: "95 km" },
+];
+
+const popularAreas = vadodaraAreas.filter((a) => a.popular);
+---
+
+<Layout
+  title="Home Service Areas in Vadodara | All Localities Covered"
+  description="Vadodara Mistry serves all areas of Vadodara for home services. Alkapuri, Gotri, Manjalpur, Akota, Fatehgunj, Karelibaug, and 40+ more areas. Same-day service available."
+  canonical="https://vadodaramistry.com/areas"
+>
+  <!-- Hero -->
+  <section class="relative text-white py-8 md:py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
+        alt="Home services in Vadodara areas"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-600/90 to-orange-500/80" />
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="md:hidden">
+          <BookingForm client:load title="Book Home Service Now" compact />
+        </div>
+        <div class="text-center md:text-left order-2 md:order-1">
+          <h1 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
+            Home Service Areas in <span class="text-yellow-300">Vadodara</span>
+          </h1>
+          <p class="text-lg md:text-xl text-orange-100">
+            We provide home services across all areas of Vadodara.
+            Painting, plumbing, carpentry, civil work & more. Same-day service available.
+          </p>
+        </div>
+        <div class="hidden md:block order-1 md:order-2">
+          <BookingForm client:load title="Book Home Service Now" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Areas -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">Popular Service Areas</h2>
+      <p class="text-gray-600 text-center mb-12">Most requested locations in Vadodara</p>
+      <div class="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        {popularAreas.map((area) => (
+          <a href={`/ac-repair-${area.slug}-vadodara`} class="bg-blue-50 hover:bg-blue-100 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition group">
+            <div class="flex items-center gap-3 mb-2">
+              <MapPin className="w-5 h-5 text-blue-600" />
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600">{area.name}</h3>
+            </div>
+            <p class="text-sm text-gray-600">AC Repair & Service</p>
+            <div class="mt-3 text-blue-600 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+              View Details <ArrowRight size={14} />
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- All Areas -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">All Vadodara Areas</h2>
+      <p class="text-gray-600 text-center mb-12">Complete coverage across Vadodara</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 max-w-5xl mx-auto">
+        {vadodaraAreas.map((area) => (
+          <a href={`/ac-repair-${area.slug}-vadodara`} class="flex items-center gap-2 bg-white hover:bg-blue-50 border border-gray-200 hover:border-blue-300 p-3 rounded-lg transition">
+            <MapPin size={14} className="text-blue-600 flex-shrink-0" />
+            <span class="text-sm font-medium text-gray-800">{area.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cities We Serve -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">Cities We Serve</h2>
+      <p class="text-gray-600 text-center mb-12">AC service available in major Gujarat cities</p>
+      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        {nearbyCities.map((city) => (
+          <a href={`/ac-repair-${city.slug}`} class="bg-gray-50 hover:bg-blue-50 p-6 rounded-xl border border-gray-200 hover:border-blue-300 transition group">
+            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 mb-1">{city.name}</h3>
+            <p class="text-sm text-gray-500">{city.distance} from Vadodara</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industrial Areas -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">Industrial Areas</h2>
+      <p class="text-gray-600 text-center mb-12">Commercial & Industrial AC service for GIDC and factory hubs</p>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="bg-white p-6 rounded-xl border border-gray-200">
+          <h3 class="text-lg font-semibold mb-2">GIDC Makarpura</h3>
+          <p class="text-gray-600 text-sm">Industrial chiller, HVAC, panel AC service</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-gray-200">
+          <h3 class="text-lg font-semibold mb-2">Nandesari GIDC</h3>
+          <p class="text-gray-600 text-sm">Factory AC, chiller repair, maintenance</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-gray-200">
+          <h3 class="text-lg font-semibold mb-2">Savli Industrial</h3>
+          <p class="text-gray-600 text-sm">VRF, central AC, industrial cooling</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-gray-200">
+          <h3 class="text-lg font-semibold mb-2">Halol Industrial</h3>
+          <p class="text-gray-600 text-sm">Commercial AC, chiller service</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-gray-200">
+          <h3 class="text-lg font-semibold mb-2">Dahej SEZ</h3>
+          <p class="text-gray-600 text-sm">Industrial HVAC, precision AC</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-gray-200">
+          <h3 class="text-lg font-semibold mb-2">Ankleshwar GIDC</h3>
+          <p class="text-gray-600 text-sm">Chemical plant cooling, chillers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-blue-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Can't Find Your Area?</h2>
+      <p class="text-blue-100 mb-8 max-w-2xl mx-auto">
+        We serve all areas in and around Vadodara. Call us to check service availability
+        in your location. Same-day service in most areas.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:+919313982980" class="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition">
+          <Phone size={22} />
+          +91 93139 82980
+        </a>
+        <a href="https://wa.me/919313982980" class="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition">
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
