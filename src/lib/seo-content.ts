@@ -1,6 +1,6 @@
 // SEO Content Generator - Creates unique 700+ word content for each service page
 
-import { ServiceCategory } from "./data";
+import type { ServiceCategory } from "./data";
 
 // Category-specific detailed content blocks
 export const categoryContent: Record<ServiceCategory, {
