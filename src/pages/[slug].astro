@@ -28,6 +28,12 @@ import {
   generateServiceSchema,
   generateBreadcrumbSchema,
 } from "../lib/business-config";
+import { allKeywords, vadodaraAreas, categoryConfig as dataCategoryConfig, categoryImages as dataCategoryImages } from "../lib/data";
+import {
+  generateKeywordContent,
+  categoryContent,
+  generateUniqueFAQs,
+} from "../lib/seo-content";
 
 export async function getStaticPaths() {
   const paths: any[] = [];
@@ -48,46 +54,329 @@ export async function getStaticPaths() {
     }
   }
 
+  // Family A: single keyword pages (350 total)
+  for (const keyword of allKeywords) {
+    paths.push({
+      params: { slug: keyword.slug },
+      props: { kind: "keyword", keyword },
+    });
+  }
+
   return paths;
 }
 
-const { kind, service, areaName, isCity } = Astro.props as {
-  kind: "service-area";
-  service: (typeof mainServices)[number];
-  areaName: string | null;
-  isCity: boolean;
-};
+const props = Astro.props as
+  | { kind: "service-area"; service: (typeof mainServices)[number]; areaName: string | null; isCity: boolean }
+  | { kind: "keyword"; keyword: (typeof allKeywords)[number] };
 
-const location = isCity ? "Vadodara" : `${areaName}, Vadodara`;
-const locationShort = isCity ? "Vadodara" : (areaName as string);
-const slug = serviceAreaSlug(service, areaName, isCity);
-const config = categoryConfig[service.category];
-const faqs = generateFAQs(service, areaName, isCity);
-const content = generateExtendedContent(service, areaName, isCity);
-const title = isCity ? `${service.name} in Vadodara` : `${service.name} in ${areaName}, Vadodara`;
-const metaTitle = `${service.name} in ${locationShort} | Best ${service.name} Services - Vadodara Mistry`;
-const metaDesc = `Expert ${service.name} in ${location}. Professional services, premium materials, 10+ years experience. Free quote: +91 93139 82980. Trusted by 5000+ customers.`;
+const { kind } = props;
 
-const faqSchema = generateFAQSchema(faqs);
-const localBusinessSchema = generateLocalBusinessSchema();
-const serviceSchema = generateServiceSchema({ title: service.name, description: metaDesc, slug });
-const breadcrumbSchema = generateBreadcrumbSchema([
-  { name: "Home", url: "https://vadodaramistry.com" },
-  { name: service.name, url: `https://vadodaramistry.com/${service.slug}-in-vadodara` },
-  ...(!isCity ? [{ name: areaName as string, url: `https://vadodaramistry.com/${slug}` }] : []),
-]);
+let metaTitle = "";
+let metaDesc = "";
+let canonical = "";
+let layoutKeywords: string[] = [];
+let jsonLdArr: object[] = [];
 
-const otherAreas = areas.filter((a) => a.name !== areaName).slice(0, 15);
+// ---- service-area branch state ----
+let service!: (typeof mainServices)[number];
+let areaName: string | null = null;
+let isCity = false;
+let location = "";
+let locationShort = "";
+let slug = "";
+let config!: (typeof categoryConfig)[keyof typeof categoryConfig];
+let faqs: { question: string; answer: string }[] = [];
+let content!: ReturnType<typeof generateExtendedContent>;
+let title = "";
+let otherAreas: typeof areas = [];
+
+// ---- keyword branch state ----
+let keyword!: (typeof allKeywords)[number];
+let category: keyof typeof dataCategoryConfig;
+let kwConfig!: (typeof dataCategoryConfig)[keyof typeof dataCategoryConfig];
+let kwImages: { src: string; alt: string }[] = [];
+let kwContent!: ReturnType<typeof generateKeywordContent>;
+let uniqueFAQs: { question: string; answer: string }[] = [];
+let relatedServices: typeof allKeywords = [];
+let kwCatContent!: (typeof categoryContent)[keyof typeof categoryContent];
+
+if (kind === "service-area") {
+  ({ service, areaName, isCity } = props);
+  location = isCity ? "Vadodara" : `${areaName}, Vadodara`;
+  locationShort = isCity ? "Vadodara" : (areaName as string);
+  slug = serviceAreaSlug(service, areaName, isCity);
+  config = categoryConfig[service.category];
+  faqs = generateFAQs(service, areaName, isCity);
+  content = generateExtendedContent(service, areaName, isCity);
+  title = isCity ? `${service.name} in Vadodara` : `${service.name} in ${areaName}, Vadodara`;
+  metaTitle = `${service.name} in ${locationShort} | Best ${service.name} Services - Vadodara Mistry`;
+  metaDesc = `Expert ${service.name} in ${location}. Professional services, premium materials, 10+ years experience. Free quote: +91 93139 82980. Trusted by 5000+ customers.`;
+  canonical = `https://vadodaramistry.com/${slug}`;
+  layoutKeywords = [...service.keywords, locationShort, "Vadodara"];
+
+  const faqSchema = generateFAQSchema(faqs);
+  const localBusinessSchema = generateLocalBusinessSchema();
+  const serviceSchema = generateServiceSchema({ title: service.name, description: metaDesc, slug });
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://vadodaramistry.com" },
+    { name: service.name, url: `https://vadodaramistry.com/${service.slug}-in-vadodara` },
+    ...(!isCity ? [{ name: areaName as string, url: `https://vadodaramistry.com/${slug}` }] : []),
+  ]);
+  jsonLdArr = [faqSchema, localBusinessSchema, serviceSchema, breadcrumbSchema];
+  otherAreas = areas.filter((a) => a.name !== areaName).slice(0, 15);
+} else {
+  ({ keyword } = props);
+  category = keyword.category;
+  kwConfig = dataCategoryConfig[category];
+  kwImages = dataCategoryImages[category];
+  kwContent = generateKeywordContent(keyword, category);
+  kwCatContent = categoryContent[category];
+  uniqueFAQs = generateUniqueFAQs(keyword, category);
+  relatedServices = allKeywords.filter((k) => k.category === category && k.slug !== keyword.slug).slice(0, 8);
+
+  slug = keyword.slug;
+  metaTitle = `${keyword.title} in Vadodara | Professional ${keyword.title} Services - Vadodara Mistry`;
+  metaDesc = `Looking for ${keyword.title.toLowerCase()} in Vadodara? Vadodara Mistry offers professional ${keyword.description.toLowerCase()}. ✓ 12+ Years Experience ✓ 10,000+ Happy Customers ✓ Best Prices ✓ Quality Work. Call +91 93139 82980`;
+  canonical = `https://vadodaramistry.com/${slug}`;
+  layoutKeywords = [keyword.title, `${keyword.title} Vadodara`, `${keyword.title} services`, `best ${keyword.title.toLowerCase()}`, `${keyword.title.toLowerCase()} near me`, "Vadodara Mistry"];
+
+  const faqSchema = generateFAQSchema(uniqueFAQs);
+  const localBusinessSchema = generateLocalBusinessSchema(keyword.title);
+  const serviceSchema = generateServiceSchema(keyword);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://vadodaramistry.com" },
+    { name: dataCategoryConfig[category].title, url: `https://vadodaramistry.com/${category}-vadodara` },
+    { name: keyword.title, url: `https://vadodaramistry.com/${keyword.slug}` },
+  ]);
+  jsonLdArr = [faqSchema, localBusinessSchema, serviceSchema, breadcrumbSchema];
+}
 ---
 
 <Layout
   title={metaTitle}
   description={metaDesc}
-  canonical={`https://vadodaramistry.com/${slug}`}
-  keywords={[...service.keywords, locationShort, "Vadodara"]}
-  jsonLd={[faqSchema, localBusinessSchema, serviceSchema, breadcrumbSchema]}
+  canonical={canonical}
+  keywords={layoutKeywords}
+  jsonLd={jsonLdArr}
 >
   <main class="min-h-screen">
+    {kind === "keyword" && (
+    <Fragment>
+      <!-- Breadcrumb -->
+      <nav class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4">
+          <ol class="flex items-center gap-2 text-sm text-gray-600">
+            <li><a href="/" class="hover:text-orange-600">Home</a></li>
+            <li>/</li>
+            <li><a href={`/${category}-vadodara`} class="hover:text-orange-600">{kwConfig.title}</a></li>
+            <li>/</li>
+            <li class="text-orange-600 font-medium">{keyword.title}</li>
+          </ol>
+        </div>
+      </nav>
+
+      <!-- Hero -->
+      <section class={`bg-gradient-to-br ${kwConfig.gradient} py-8 md:py-20`}>
+        <div class="container mx-auto px-4">
+          <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div class="text-white">
+              <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-4">
+                <span>⭐ 4.8/5 Rating • 10,000+ Happy Customers</span>
+              </div>
+              <h1 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6">{keyword.title} in Vadodara</h1>
+              <p class="text-lg md:text-xl mb-6 text-white/90">
+                Professional {keyword.title.toLowerCase()} contractors in Vadodara. Trusted by thousands of customers.
+                Quality work at affordable prices with warranty.
+              </p>
+              <div class="flex flex-wrap gap-4 mb-6">
+                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg">
+                  <span>✓</span>
+                  <span class="text-sm">12+ Years Experience</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg">
+                  <span>✓</span>
+                  <span class="text-sm">Free Quotation</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg">
+                  <span>✓</span>
+                  <span class="text-sm">Warranty Included</span>
+                </div>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="tel:+919313982980" class="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center justify-center gap-2">
+                  <Phone className="w-5 h-5" />
+                  Call: +91 93139 82980
+                </a>
+                <a href={`https://wa.me/919313982980?text=Hi, I need ${keyword.title} service in Vadodara`} class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center justify-center gap-2">
+                  WhatsApp Us
+                </a>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-2xl">
+              <BookingForm client:load title={`Get Free ${keyword.title} Quote`} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image Gallery -->
+      <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-8">Our {kwConfig.title} Work Gallery</h2>
+          <div class="max-w-4xl mx-auto">
+            <ImageSlider client:visible images={kwImages} autoPlay={true} interval={4000} />
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us for {keyword.title}?</h2>
+          <div class="grid md:grid-cols-4 gap-8">
+            {[
+              { icon: "✓", title: "12+ Years Experience", desc: "Trusted expertise since 2012" },
+              { icon: "⚡", title: "Quick Response", desc: "Same day service available" },
+              { icon: "💰", title: "Best Prices", desc: "Transparent pricing, no hidden costs" },
+              { icon: "🛡️", title: "Quality Assured", desc: "Warranty on all work" },
+            ].map((feature) => (
+              <div class="text-center p-6 rounded-xl bg-gray-50">
+                <div class="text-4xl mb-4">{feature.icon}</div>
+                <h3 class="font-semibold text-lg mb-2">{feature.title}</h3>
+                <p class="text-gray-600">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto prose prose-lg">
+            <div class="bg-white rounded-2xl p-8 shadow-sm mb-8">
+              <h2 class="text-3xl font-bold text-gray-900 mb-6">About {keyword.title} Services in Vadodara</h2>
+              <div class="text-gray-700 leading-relaxed space-y-4">
+                <p>{kwContent.introduction}</p>
+                <p>{kwContent.detailedDescription}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us list -->
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">Why Choose Vadodara Mistry for {keyword.title}?</h2>
+          <div class="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {kwCatContent.whyChooseUs.map((reason) => (
+              <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                <span class="text-green-600 font-bold text-xl">✓</span>
+                <p class="text-gray-700">{reason}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Process -->
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-4">Our {keyword.title} Process</h2>
+          <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            We follow a systematic approach to ensure quality results for every {keyword.title.toLowerCase()} project
+          </p>
+          <div class="max-w-4xl mx-auto space-y-6">
+            {kwCatContent.serviceProcess.map((step, idx) => (
+              <div class="bg-white rounded-xl p-6 shadow-sm flex gap-6">
+                <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                  <span class="text-xl font-bold text-orange-600">{idx + 1}</span>
+                </div>
+                <div>
+                  <h3 class="font-bold text-lg text-gray-900 mb-2">{step.title}</h3>
+                  <p class="text-gray-600">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <Testimonials filterService={category} limit={6} client:visible />
+
+      <!-- Service Areas -->
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-4">{keyword.title} Service Areas in Vadodara</h2>
+          <p class="text-center text-gray-600 mb-12">We provide {keyword.title.toLowerCase()} services across all Vadodara areas</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
+            {vadodaraAreas.map((area) => (
+              <a href={`/${area.slug}-vadodara`} class="p-3 bg-gray-50 hover:bg-orange-50 rounded-lg text-center text-sm hover:text-orange-600 transition">
+                {area.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-4">Frequently Asked Questions About {keyword.title}</h2>
+          <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Find answers to common questions about our {keyword.title.toLowerCase()} services in Vadodara
+          </p>
+          <div class="max-w-3xl mx-auto space-y-4">
+            {uniqueFAQs.map((faq) => (
+              <details class="bg-white rounded-xl p-6 shadow-sm group">
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                  {faq.question}
+                  <span class="text-orange-500 group-open:rotate-180 transition">▼</span>
+                </summary>
+                <p class="mt-4 text-gray-600">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Services -->
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">Related Services</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {relatedServices.map((rs) => (
+              <a href={`/${rs.slug}`} class="p-4 border border-gray-200 rounded-xl hover:border-orange-500 hover:shadow-md transition text-center">
+                <h3 class="font-medium">{rs.title}</h3>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class={`${kwConfig.gradient} bg-gradient-to-br py-16`}>
+        <div class="container mx-auto px-4 text-center text-white">
+          <h2 class="text-3xl font-bold mb-4">Need {keyword.title} Service in Vadodara?</h2>
+          <p class="text-xl mb-8 text-white/90">Call us now for instant service. Available 7 days a week.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+919313982980" class="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center justify-center gap-2">
+              <Phone className="w-5 h-5" />
+              Call Now
+            </a>
+            <a href="https://wa.me/919313982980" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center justify-center gap-2">
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </section>
+    </Fragment>
+    )}
+
+    {kind === "service-area" && (
+    <Fragment>
     <!-- Hero Section -->
     <section class={`relative bg-gradient-to-br ${config.gradient} text-white py-16 md:py-24 overflow-hidden`}>
       <div class="absolute inset-0">
@@ -315,6 +604,8 @@ const otherAreas = areas.filter((a) => a.name !== areaName).slice(0, 15);
           </div>
         </div>
       </section>
+    )}
+    </Fragment>
     )}
   </main>
 </Layout>
